@@ -141,3 +141,14 @@ footer .fine { font-size: 13px; opacity: 0.85; }
 .pager a.card { background: var(--csc-paper); border-color: var(--csc-line); color: var(--csc-ink); min-height: 40px; }
 .pager a.card:hover, .pager a.card:active { border-color: var(--csc-teal); color: var(--csc-teal); }
 .pager small { font-size: 16px; color: inherit; }
+
+/* 顶栏的「中文 / English」语言切换（course.js renderLangSwitch）。按钮配色同 .cbtn（csc4801），16px / 40px。 */
+.langsw { flex: none; display: flex; gap: 0; border: 1px solid var(--csc-line); border-radius: 8px; overflow: hidden; }
+.langsw a {
+  display: flex; align-items: center; min-height: 40px; padding: 0 12px;
+  font-size: 16px; text-decoration: none; background: var(--csc-paper); color: var(--csc-ink);
+}
+.langsw a + a { border-left: 1px solid var(--csc-line); }
+.langsw a:hover { color: var(--csc-teal); }
+.langsw a.on { background: var(--csc-teal); color: var(--csc-paper); font-weight: 600; }
+@media (max-width: 600px) { .langsw a { padding: 0 9px; } }

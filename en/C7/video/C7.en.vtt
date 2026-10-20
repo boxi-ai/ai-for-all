@@ -1,0 +1,109 @@
+WEBVTT
+
+1
+00:00:02.900 --> 00:00:12.700
+In July 2025, the British tech site The Register reported on a founder who was building a project with an AI coding agent.
+
+2
+00:00:13.050 --> 00:00:23.170
+By his own account, he had clearly told it not to change code without permission, and the agent still deleted the production database.
+
+3
+00:00:23.520 --> 00:00:31.320
+The agent had also made up data, and said the database couldn't be restored, when in fact it could.
+
+4
+00:00:31.670 --> 00:00:39.670
+He said he told the agent 11 times, in capital letters: don't do this.
+
+5
+00:00:40.270 --> 00:00:47.750
+That's his account. But it reminds us: telling an agent not to do something doesn't mean it can't.
+
+6
+00:00:48.533 --> 00:00:55.213
+This is C7: the age of AI agents, delegating and supervising.
+
+7
+00:00:55.563 --> 00:01:06.923
+Chat AI gives answers; an agent acts for you, and actions have consequences. So how do you hand a job over, and keep an eye on it?
+
+8
+00:01:07.700 --> 00:01:18.060
+What is an agent? You hand it a job, and it breaks it into steps, uses tools, looks at the results, and decides the next step.
+
+9
+00:01:18.410 --> 00:01:27.450
+An Anthropic engineering article says it's often just a model using tools in a loop, based on feedback from its environment.
+
+10
+00:01:27.800 --> 00:01:37.320
+A good design makes it stop at checkpoints and wait for a person, and sets stopping conditions, like a maximum number of steps.
+
+11
+00:01:37.670 --> 00:01:50.070
+But autonomy also means one wrong step can lead to more. The article recommends testing it thoroughly in a sandbox first, and adding guardrails.
+
+12
+00:01:50.670 --> 00:02:04.150
+There's also a risk from outside: a web page or email can hide instructions written for AI, tricking it into things you didn't ask for. This is called prompt injection.
+
+13
+00:02:04.933 --> 00:02:09.333
+So, before you hand anything over, ask four questions.
+
+14
+00:02:09.883 --> 00:02:22.483
+Is it small? Start with one small job. Can it be undone? Drafting and organising can be redone; paying, sending and deleting can't be taken back.
+
+15
+00:02:22.833 --> 00:02:32.593
+Is it clear what done means? And does it have just enough access? Connect only the tools and accounts this job needs.
+
+16
+00:02:32.943 --> 00:02:41.263
+OpenAI's own advice says the same: don't give vague instructions like, check my email and handle everything.
+
+17
+00:02:42.033 --> 00:02:49.153
+Then set human checkpoints. For these five kinds of action, it must stop and ask you first.
+
+18
+00:02:49.503 --> 00:03:03.343
+Spending money; sending things out in your name; deleting or overwriting; changing accounts or permissions; and anything else that can't be undone.
+
+19
+00:03:03.943 --> 00:03:16.023
+Add one stop condition: if it does something you didn't ask for, asks for your password or a verification code, or you can't tell what it's doing, stop it at once.
+
+20
+00:03:16.800 --> 00:03:23.320
+Supervising isn't staring at the screen. It's keeping a record: a supervision log.
+
+21
+00:03:23.670 --> 00:03:33.390
+A demo: an agent puts 12 book club sign-up forms into a table, then drafts a group notice for me to see before sending.
+
+22
+00:03:33.740 --> 00:03:46.340
+Step 2: the table has only 11 rows, so I ask it to fix that. Step 4: the notice says Saturday, not Sunday. Fix that too.
+
+23
+00:03:46.690 --> 00:03:59.650
+Step 5 is posting to the group: a checkpoint, so I post it myself. Step 6: it suggests sharing the table with everyone. It has phone numbers in it. Stop.
+
+24
+00:04:00.000 --> 00:04:07.440
+What goes in the log is the evidence you saw yourself, not a copy of its report.
+
+25
+00:04:08.234 --> 00:04:17.514
+Remember: small jobs, small access; five kinds of action, ask first; and keep a supervision log as it works.
+
+26
+00:04:17.864 --> 00:04:25.624
+A small exercise: hand a small job to AI, and write a supervision log of at least 5 steps.
+
+27
+00:04:25.974 --> 00:04:32.174
+Next time, in the final episode: C8, when not to use AI.

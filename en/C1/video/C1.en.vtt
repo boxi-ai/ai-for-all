@@ -1,0 +1,101 @@
+WEBVTT
+
+1
+00:00:02.900 --> 00:00:12.700
+In 1966, Joseph Weizenbaum at MIT shared a computer program that could chat. He called it ELIZA.
+
+2
+00:00:13.050 --> 00:00:23.210
+Its trick was simple. It looked for a keyword in what you typed, then followed rules written in advance to turn your own words back into a question.
+
+3
+00:00:23.560 --> 00:00:38.280
+Yet many people felt, after just a few lines, that it understood them. According to the record, Weizenbaum's own secretary asked him to leave the room so she could talk to ELIZA in private.
+
+4
+00:00:38.630 --> 00:00:44.950
+So why would a program that only follows rules make people feel understood?
+
+5
+00:00:45.550 --> 00:00:54.230
+Today's AI talks far better than ELIZA ever did. So what is AI, really? And what isn't it?
+
+6
+00:00:55.000 --> 00:01:02.720
+This is the first lesson of AI Literacy for Everyone: what AI is, and what it isn't.
+
+7
+00:01:03.070 --> 00:01:11.910
+By the end, you'll be able to tell two things apart: being able to talk, and being able to think and take responsibility.
+
+8
+00:01:12.700 --> 00:01:22.660
+First, what AI is. The OECD, an international organisation, has a definition. In plain words, it says this:
+
+9
+00:01:23.010 --> 00:01:30.850
+AI is a machine-based system that works out, from the input it gets, what output to give.
+
+10
+00:01:31.450 --> 00:01:39.490
+There are four common kinds of output: predictions, recommendations, content, and decisions.
+
+11
+00:01:39.840 --> 00:01:55.240
+Your map app guessing when you'll arrive is a prediction. The next short video in your feed is a recommendation. A paragraph from a chatbot is content. A door that unlocks when it sees your face is making a decision.
+
+12
+00:01:55.590 --> 00:02:05.190
+Everything ELIZA could do was in rules that people wrote. Most of today's AI is different: it learns what it can do from huge amounts of data.
+
+13
+00:02:05.967 --> 00:02:11.807
+Now, what AI isn't. Remember three things that are not the same.
+
+14
+00:02:12.157 --> 00:02:23.837
+One: talking is not understanding. When it says, I understand how you feel, that doesn't mean it really understands, or really cares.
+
+15
+00:02:24.187 --> 00:02:36.387
+Two: answering is not knowing. In its very first demo, Google's chatbot got a fact wrong about the first photo of a planet outside our solar system.
+
+16
+00:02:36.737 --> 00:02:51.737
+Three: doing a job is not taking responsibility. An airline in Canada argued that the chatbot on its website was responsible for what it said. The tribunal didn't accept that, and ordered the airline to pay.
+
+17
+00:02:52.087 --> 00:03:01.167
+When a machine does something, people answer for it: the people who use it, and the organisation that put it to work.
+
+18
+00:03:01.934 --> 00:03:09.694
+Let's play a quick game you can do without any devices. It's called guess the rule, and this is a demo.
+
+19
+00:03:10.044 --> 00:03:19.564
+One person is the machine. They hold a secret rule card. For example: if the word is an animal, raise your left hand.
+
+20
+00:03:19.914 --> 00:03:30.434
+Everyone else calls out words. Kitten: left hand. Table: nothing. Tiger: left hand.
+
+21
+00:03:30.784 --> 00:03:42.944
+Have you guessed the rule? The machine is fast and accurate. But it doesn't know that kittens are cute, or that tigers are dangerous. It's just following the rule.
+
+22
+00:03:43.294 --> 00:03:54.454
+Today's AI learns its rules from data instead of being handed them. But the point is the same: getting it right is not understanding.
+
+23
+00:03:55.234 --> 00:04:08.914
+Three things to remember. AI works out outputs from inputs. Talking isn't understanding, and answering isn't knowing. And when something goes wrong, people are responsible.
+
+24
+00:04:09.264 --> 00:04:21.304
+A quick exercise: today, count how many times you use AI. Each time, is it predicting, recommending, creating content, or making a decision?
+
+25
+00:04:21.654 --> 00:04:30.414
+Next time, in C2: where do AI's answers come from, and why does it sometimes make things up with a straight face?

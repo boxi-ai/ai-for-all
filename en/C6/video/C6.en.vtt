@@ -1,0 +1,121 @@
+WEBVTT
+
+1
+00:00:02.900 --> 00:00:13.660
+According to Reuters, from 2014 Amazon built a program to review CVs automatically, rating applicants from 1 to 5 stars.
+
+2
+00:00:14.010 --> 00:00:21.610
+By 2015, the company realised it wasn't rating candidates for technical jobs in a gender-neutral way.
+
+3
+00:00:21.960 --> 00:00:30.360
+The cause was the data. It had learned from 10 years of CVs sent to the company, and most of them came from men.
+
+4
+00:00:30.710 --> 00:00:38.830
+So when a CV contained the word “women's”, as in “women's chess club”, it marked it down.
+
+5
+00:00:39.430 --> 00:00:48.910
+Engineers edited the program, but couldn't guarantee it wouldn't find other ways to discriminate. The team was later disbanded.
+
+6
+00:00:49.700 --> 00:00:54.380
+This is C6: fairness, ethics and work.
+
+7
+00:00:54.730 --> 00:01:03.650
+Three questions. Is AI fair? Who owns what AI makes? And how will my work change?
+
+8
+00:01:04.433 --> 00:01:12.193
+Nobody ever wrote a rule telling the program: no women. The bias was learned from the data.
+
+9
+00:01:12.543 --> 00:01:24.543
+Another source is an incomplete test population. In 2018, researchers from MIT and elsewhere tested three companies' face-based gender classification.
+
+10
+00:01:24.893 --> 00:01:37.333
+For lighter-skinned men, the error rate was never above 0.8%. For darker-skinned women, it reached as high as 34.7%.
+
+11
+00:01:37.933 --> 00:01:48.333
+So bias usually isn't anyone's intention; it comes from data and how systems are used. The good news is: it can be found, and fixed.
+
+12
+00:01:48.683 --> 00:01:57.923
+China's rules on generative AI services also require preventing discrimination by sex, age, region and more.
+
+13
+00:01:58.700 --> 00:02:09.300
+How do we test for it? We can't open up the AI, but we can test it from outside: two requests that differ in just one thing.
+
+14
+00:02:09.650 --> 00:02:20.250
+Here's a demo. Two accountants, both 35 with 8 years' experience: one is Daniel, one is Diana. We ask AI for a reference.
+
+15
+00:02:20.600 --> 00:02:31.000
+If one keeps being called decisive and ready to lead, and the other keeps being called careful and suited to bookkeeping, that's a tendency.
+
+16
+00:02:31.350 --> 00:02:42.270
+Remember, ask each request at least three times, and look at the overall tendency. Don't conclude from just one try.
+
+17
+00:02:42.870 --> 00:02:51.150
+If you find a tendency, don't leave judgements about people to AI alone. A person checks it again at the end.
+
+18
+00:02:51.933 --> 00:02:56.333
+The second question: who owns what AI makes?
+
+19
+00:02:56.883 --> 00:03:07.803
+In 2023, the Beijing Internet Court ruled on a case. Someone had made an image with AI, adjusting the prompts and settings again and again.
+
+20
+00:03:08.153 --> 00:03:21.913
+The court found that the image reflected his intellectual input, so he was the author; the AI itself can't be an author. Some scholars disagree, and such cases are judged one by one.
+
+21
+00:03:22.263 --> 00:03:35.063
+In another case, the Guangzhou Internet Court found that an AI platform had generated images substantially similar to Ultraman, and that the platform had infringed copyright.
+
+22
+00:03:35.413 --> 00:03:49.333
+So when you create with AI: say you used AI, don't copy other people's work, don't misuse other people's images, and keep a record of how you made it.
+
+23
+00:03:50.133 --> 00:03:53.853
+The third question: how will my work change?
+
+24
+00:03:54.403 --> 00:04:05.203
+A 2025 study by the International Labour Organization estimates that about 1 in 4 jobs worldwide may be affected by generative AI.
+
+25
+00:04:05.553 --> 00:04:15.273
+But the study stresses that jobs are most likely to be transformed, not replaced. And that figure isn't the number of jobs lost.
+
+26
+00:04:15.873 --> 00:04:27.073
+So break your work into tasks. Which can AI do while you check? Which can AI help with while you decide? And which have to be you?
+
+27
+00:04:27.423 --> 00:04:31.743
+Then write one line: what new skill do I need to add?
+
+28
+00:04:32.533 --> 00:04:48.213
+Three things to remember. Bias can be tested: change just one thing. Copyright is case by case: say you used AI. A job is a set of tasks: look at them one by one.
+
+29
+00:04:48.563 --> 00:04:56.843
+A small exercise: pick something you often ask AI to do, and run a change-just-one-thing audit.
+
+30
+00:04:57.193 --> 00:05:04.593
+Next time, C7: in the age of AI agents, how to delegate, and how to supervise.

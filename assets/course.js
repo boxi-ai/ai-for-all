@@ -1,7 +1,13 @@
-// 「AI 通识课」课程信息和页脚。每页在 app.js 之前加载。
+// 「AI 通识课」课程信息、页脚和语言切换。每页在 app.js 之前加载。
 // 照 peiyuUniversity/csc4801/site/assets/course.js 的做法：课程信息集中在这里，app.js 不写死课程名。
+// 双语（2026-10-20 加英文版）：页面语言看 <html lang>（zh-CN / en）；英文页在 site/en/ 下，和中文页一一对应。
+// 每页的 <html> 写 data-root（到 site/ 根的相对路径）和 data-page（本页相对 site/ 或 site/en/ 的路径），
+// 语言切换按钮和页脚 logo 路径都从这两个属性算。
 
-const COURSE = {
+const PAGE_LANG = /^en/i.test(document.documentElement.lang) ? "en" : "zh";
+const SITE_ROOT = document.documentElement.dataset.root ?? "../";   // 到 site/ 根，例如 "../"、"../../"
+
+const COURSE_ZH = {
   code: "AI 通识课",
   name: "AI 通识课 · AI Literacy for Everyone",
   short: "AI 通识课",
@@ -10,6 +16,18 @@ const COURSE = {
   checked: "讲义里的每个事实都有出处链接；标「演示」的例子是为教学构造的。",
   themeKey: "aiforall-theme",
 };
+// 英文版：署名中文行不变，另加英文行 'Peiyu AI · Boxi Yu'（用户 2026-10-19 定）。
+const COURSE_EN = {
+  code: "AI Literacy",
+  name: "AI Literacy for Everyone · AI 通识课",
+  short: "AI Literacy",
+  credit: "培玉智能 · Boxi Yu",
+  creditEn: "Peiyu AI · Boxi Yu",
+  motto: "Everyone can use it, everyone can check it, everyone knows when not to use it",
+  checked: "Every fact in the notes links to its source; examples marked “Demo” were made up for teaching.",
+  themeKey: "aiforall-theme",
+};
+const COURSE = PAGE_LANG === "en" ? COURSE_EN : COURSE_ZH;
 
 // 每个模块的视频（tools/videos.py 生成到 CN/video/，不进源仓库，发布时复制）。dur 给总览卡片和播放器标题用。
 const VIDEOS = {
@@ -23,8 +41,25 @@ const VIDEOS = {
   C8: { title: "C8 何时不用 AI：关闭 AI 的检查点和系列小结", dur: "3:55" },
 };
 
-// 模块首页顶部的播放器：中文字幕默认打开，英文可选；文件不在（本地预览没生成视频）就整块不显示。
+// 英文页的视频。narration: "zh" = 暂时放中文配音的视频（site/CN/video/），英文字幕默认打开；
+// 英文配音做好、放进 site/en/CN/video/CN.mp4（同名 .en.vtt / .zh.vtt / .jpg）以后，把那一行的 narration 改成 "en"、
+// dur 改成英文版时长即可（一行改动）。
+const VIDEOS_EN = {
+  C1: { title: "C1 What AI is: talking isn't thinking", dur: "4:34", narration: "en" },
+  C2: { title: "C2 Data, models and hallucination: where AI's answers come from", dur: "5:33", narration: "en" },
+  C3: { title: "C3 Describing and delegating: how to explain a task clearly", dur: "5:02", narration: "en" },
+  C4: { title: "C4 Checking: how do you know if AI is right?", dur: "5:51", narration: "en" },
+  C5: { title: "C5 Safety, privacy and scams: face swaps and fake voices", dur: "5:01", narration: "en" },
+  C6: { title: "C6 Fairness, ethics and work: bias, copyright and my job", dur: "5:09", narration: "en" },
+  C7: { title: "C7 Agents: delegation and oversight — checkpoints and a supervision log", dur: "4:36", narration: "en" },
+  C8: { title: "C8 When not to use AI: AI-off checkpoints and a series recap", dur: "4:41", narration: "en" },
+};
+const VIDEO_INDEX = PAGE_LANG === "en" ? VIDEOS_EN : VIDEOS;
+
+// 模块首页顶部的播放器：中文页中文字幕默认打开、英文可选；英文页英文字幕默认打开。
+// 文件不在（本地预览没生成视频）就整块不显示（app.js mountLectureVideo）。
 function videoBlock(code) {
+  if (PAGE_LANG === "en") return videoBlockEn(code);
   const v = VIDEOS[code];
   if (!v) return "";
   const base = `video/${code}`;
@@ -44,17 +79,72 @@ function videoBlock(code) {
   </section>`;
 }
 
+function videoBlockEn(code) {
+  const v = VIDEOS_EN[code];
+  if (!v) return "";
+  const english = v.narration === "en";
+  const base = english ? `video/${code}` : `${SITE_ROOT}${code}/video/${code}`;
+  const note = english
+    ? "English narration · English subtitles (Chinese available)"
+    : "Chinese narration with English subtitles · <b>English narration coming soon</b>";
+  return `<section class="lecture-video" id="video" aria-label="Video for this module">
+    <video controls preload="metadata" playsinline poster="${base}.jpg">
+      <source src="${base}.mp4" type="video/mp4">
+      <track kind="subtitles" srclang="en" label="English" src="${base}.en.vtt" default>
+      <track kind="subtitles" srclang="zh" label="中文" src="${base}.zh.vtt">
+      Your browser can't play this video. You can <a href="${base}.mp4" download>download the mp4</a>.
+    </video>
+    <p class="vmeta"><b>Video</b> · ${v.title} · ${v.dur} · ${note}</p>
+    <div class="vacts">
+      <a class="vbtn watch" href="${base}.mp4" download="${code}${english ? "-en" : ""}.mp4">▶ Download video (mp4)</a>
+      <a class="vbtn cbtn-csc" href="${base}.en.vtt" download>English subtitles</a>
+      <a class="vbtn cbtn-csc" href="${base}.zh.vtt" download>中文字幕</a>
+    </div>
+  </section>`;
+}
+
 // 这是培玉自己的课，页脚放培玉品牌；署名固定为「培玉智能 · Boxi Yu」（用户 2026-10-19 定）。内容 CC BY-SA 4.0，培玉 logo 和商标除外（见 LICENSE-NOTE.md）。
-function renderFooter(root = "") {
+// root 是到 site/ 根的相对路径；不传就用 <html data-root>。
+function renderFooter(root = SITE_ROOT) {
   const f = document.querySelector("footer");
   if (!f) return;
-  f.innerHTML = `<div class="wrap">
+  const logos = `<img class="logo-light" src="${root}assets/peiyu-logo.svg" alt="培玉智能 logo" width="18" height="18">
+      <img class="logo-dark" src="${root}assets/peiyu-logo-white.svg" alt="培玉智能 logo" width="18" height="18">`;
+  f.innerHTML = PAGE_LANG === "en" ? `<div class="wrap">
     <p>${COURSE.name} · ${COURSE.motto}</p>
     <p class="credit">
-      <img class="logo-light" src="${root}assets/peiyu-logo.svg" alt="培玉智能 logo" width="18" height="18">
-      <img class="logo-dark" src="${root}assets/peiyu-logo-white.svg" alt="培玉智能 logo" width="18" height="18">
+      ${logos}
+      <span><b>${COURSE.credit}</b> · <b>${COURSE.creditEn}</b> · Content licensed <a href="https://creativecommons.org/licenses/by-sa/4.0/" target="_blank" rel="noopener license">CC BY-SA 4.0</a> (except the 培玉 / Peiyu name, logo and trademarks; all rights reserved) · Code MIT</span>
+    </p>
+    <p class="fine">${COURSE.checked}</p>
+  </div>` : `<div class="wrap">
+    <p>${COURSE.name} · ${COURSE.motto}</p>
+    <p class="credit">
+      ${logos}
       <span><b>${COURSE.credit}</b> · 内容采用 <a href="https://creativecommons.org/licenses/by-sa/4.0/deed.zh-hans" target="_blank" rel="noopener license">CC BY-SA 4.0</a>（培玉 logo 和商标除外，保留所有权利）</span>
     </p>
     <p class="fine">${COURSE.checked}</p>
   </div>`;
 }
+
+// 顶栏的「中文 / English」切换：链接到另一种语言的同一页，模块页的 #/章节 也带过去（两种语言的章节 slug 相同）。
+function langHref(lang) {
+  const page = document.documentElement.dataset.page || "index.html";
+  return `${SITE_ROOT}${lang === "en" ? "en/" : ""}${page}${location.hash}`;
+}
+
+function renderLangSwitch() {
+  const bar = document.querySelector(".topbar");
+  if (!bar || bar.querySelector(".langsw")) return;
+  const nav = document.createElement("nav");
+  nav.className = "langsw";
+  nav.setAttribute("aria-label", "语言 / Language");
+  nav.innerHTML = ["zh", "en"].map((l) => `<a data-lang="${l}" lang="${l === "en" ? "en" : "zh-CN"}" hreflang="${l === "en" ? "en" : "zh-CN"}"
+    ${l === PAGE_LANG ? 'aria-current="true" class="on"' : ""}>${l === "en" ? "English" : "中文"}</a>`).join("");
+  const update = () => nav.querySelectorAll("a").forEach((a) => { a.href = langHref(a.dataset.lang); });
+  update();
+  addEventListener("hashchange", update);
+  const theme = bar.querySelector("#theme");
+  bar.insertBefore(nav, theme || null);
+}
+renderLangSwitch();

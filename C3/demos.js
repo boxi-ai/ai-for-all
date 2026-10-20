@@ -1,40 +1,104 @@
 // C3 的互动演示。讲座通知的三种写法、AI 回答和打分表都是构造的演示材料（见 notes/C3-describe-delegate.md 第 4 节）。
+// 中英两版共用这一份（英文页 site/en/C3/ 也加载它）：文字在 L10N 表里，按 course.js 的 PAGE_LANG 取。
 
 const escHTML = (s) => String(s).replace(/[&<>"]/g, (c) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" }[c]));
 
-// 同讲义第 4 节：三种交代，三段 AI 回答（演示，不是真实运行记录）。
-const STYLES = [
-  {
-    name: "写法 A · 一句话",
-    prompt: "写个讲座通知。",
-    reply: "尊敬的各位居民：兹定于本月 20 日下午 2 点，在社区二楼会议室举办『健康生活』专题讲座，特邀某医院张主任主讲……",
-    note: "时间、地点、题目、主讲人全是 AI 自己补的，读起来像真的。",
-    bad: true,
+const L10N = {
+  zh: {
+    // 同讲义第 4 节：三种交代，三段 AI 回答（演示，不是真实运行记录）。
+    styles: [
+      {
+        name: "写法 A · 一句话",
+        prompt: "写个讲座通知。",
+        reply: "尊敬的各位居民：兹定于本月 20 日下午 2 点，在社区二楼会议室举办『健康生活』专题讲座，特邀某医院张主任主讲……",
+        note: "时间、地点、题目、主讲人全是 AI 自己补的，读起来像真的。",
+        bad: true,
+      },
+      {
+        name: "写法 B · 给了事实",
+        prompt: "写个讲座通知：本周六上午 9 点半，社区活动室，讲防诈骗。",
+        reply: "关于举办防范电信网络诈骗专题讲座的通知。为进一步提高广大业主的防骗意识，经研究决定……诚邀各位业主拨冗莅临。",
+        note: "事实对了，但写成了一页正式公文，老人在手机上看着费劲。",
+        bad: true,
+      },
+      {
+        name: "写法 C · 四件事都说了",
+        prompt: "请帮我写一条发在小区业主群的通知。读者大多是六七十岁的老人，用手机看。内容：本周六上午 9 点半，在社区活动室，有一场防诈骗讲座，大约一小时，可以带家人一起来。要求：不超过 100 字，分 3 行，口语、亲切；不用英文和网络用语；我没给的信息不要加，比如主讲人名字；不确定的地方用【待确认】标出来。",
+        reply: "【周六防骗讲座】本周六上午 9 点半，社区活动室，讲讲怎么防骗。大约一小时，欢迎带上家人一起来。有问题在群里问我。",
+        note: "短、清楚。但「有问题在群里问我」是 AI 加的，发之前要确认谁来回答。",
+        bad: false,
+      },
+    ],
+    demo: "（演示）", myBrief: "我的交代", aiReply: "AI 回答（演示）", ellipsis: "……", heroCut: 70,
+    // 交代单：四件事分别填，下面实时拼成一段交代，并指出还缺哪件事。
+    parts: [
+      ["what", "做什么", "任务和成品，比如：写一条发在业主群的通知"],
+      ["who", "给谁用", "读者、用途、背景材料，比如：读者大多是老人，用手机看"],
+      ["good", "什么样算好", "长度、格式、语气，比如：不超过 100 字，分 3 行，口语"],
+      ["dont", "哪些不要", "边界，比如：我没给的信息不要加，不确定的标【待确认】"],
+    ],
+    builderIntro: "把一件你想交给 AI 的事，按四件事分别写下来。下面会拼成一段完整的交代。",
+    assembled: "拼好的交代", notYet: "（还没写）", joiner: "。", end: "。",
+    privacy: "提醒：不要在这里或交代里写身份证号、银行卡号、病历、单位文件等信息（C5）。这个页面不保存、不上传你写的内容。",
+    missing: (list) => `还缺：${list.join("、")}。`, allFour: "四件事都说了。交回来以后，事实部分照 C4 查一遍。",
+    // 三种写法打分：每项 0–2 分，看分数从哪件事上拉开。
+    rubric: ["事实对不对，有没有编", "适不适合读者", "长度、格式合不合要求", "拿回来还要改多少（改得少分高）"],
+    lookAt: "看什么", total: "合计",
+    rubricHint: "参考：A 在「有没有编」上丢分最多，B 在「适不适合读者」上丢分，C 也不是满分：它加了一句我们没给的话。",
   },
-  {
-    name: "写法 B · 给了事实",
-    prompt: "写个讲座通知：本周六上午 9 点半，社区活动室，讲防诈骗。",
-    reply: "关于举办防范电信网络诈骗专题讲座的通知。为进一步提高广大业主的防骗意识，经研究决定……诚邀各位业主拨冗莅临。",
-    note: "事实对了，但写成了一页正式公文，老人在手机上看着费劲。",
-    bad: true,
+  en: {
+    styles: [
+      {
+        name: "Version A · one line",
+        prompt: "Write a notice about a talk.",
+        reply: "Dear Residents, We are delighted to announce that a special talk on ‘Healthy Living’ will be held at 2 p.m. on the 20th of this month in the second-floor meeting room of the community centre, delivered by our guest speaker Dr Zhang of the local hospital…",
+        note: "The time, place, topic and speaker were all filled in by the AI, and it reads as if it were real.",
+        bad: true,
+      },
+      {
+        name: "Version B · gives the facts",
+        prompt: "Write a notice about a talk: this Saturday, 9:30 a.m., community activity room, on avoiding scams.",
+        reply: "NOTICE CONCERNING THE HOLDING OF A SPECIAL LECTURE ON THE PREVENTION OF TELECOMMUNICATIONS AND ONLINE FRAUD. With a view to further enhancing residents’ awareness of fraud prevention, it has been resolved… The honour of your attendance is cordially requested.",
+        note: "The facts are right, but it’s a full-page formal notice, hard work for older readers on a phone.",
+        bad: true,
+      },
+      {
+        name: "Version C · all four things",
+        prompt: "Please write a notice for our building’s residents’ group chat. Most readers are in their sixties and seventies and read on their phones. Content: this Saturday at 9:30 a.m. there’s a talk on avoiding scams in the community activity room, about an hour long, and people are welcome to bring family. Requirements: under 60 words, 3 lines, plain and friendly; no jargon or internet slang; don’t add anything I haven’t told you, such as a speaker’s name; mark anything uncertain [TO CHECK].",
+        reply: "[Saturday scam-safety talk] This Saturday, 9:30 a.m., community activity room: how to spot and stop scams. About an hour, and family are welcome too. Any questions, just ask me here.",
+        note: "Short and clear. But “Any questions, just ask me here” was added by the AI; before posting, confirm who will answer.",
+        bad: false,
+      },
+    ],
+    demo: " (Demo)", myBrief: "My brief", aiReply: "AI reply (Demo)", ellipsis: "…", heroCut: 120,
+    // Briefing sheet: fill in the four things; they are joined into one brief below, with what's still missing.
+    parts: [
+      ["what", "What to do", "The task and the finished product, e.g. write a notice for the residents’ group chat"],
+      ["who", "Who it’s for", "Readers, purpose, background, e.g. most readers are older and read on their phones"],
+      ["good", "What good looks like", "Length, format, tone, e.g. under 60 words, 3 lines, plain and friendly"],
+      ["dont", "What to avoid", "Limits, e.g. don’t add anything I haven’t told you; mark anything uncertain [TO CHECK]"],
+    ],
+    builderIntro: "Take something you want to hand to AI and write down the four things separately. They’ll be joined into one full brief below.",
+    assembled: "Your brief", notYet: "(nothing yet)", joiner: ". ", end: ".",
+    privacy: "Reminder: don’t type ID numbers, bank card numbers, medical records or work documents here or in any brief (C5). This page doesn’t save or upload what you write.",
+    missing: (list) => `Still missing: ${list.join(", ")}.`, allFour: "All four things are there. When the result comes back, check the facts the C4 way.",
+    // Score the three versions: 0–2 per row; see which row pulls the scores apart.
+    rubric: ["Are the facts right? Was anything made up?", "Does it suit the readers?", "Does the length and format meet the brief?", "How much editing does it still need? (less editing = higher score)"],
+    lookAt: "What to look at", total: "Total",
+    rubricHint: "For reference: A loses most on “was anything made up”, B loses on “does it suit the readers”, and C isn’t perfect either: it added a line we never gave it.",
   },
-  {
-    name: "写法 C · 四件事都说了",
-    prompt: "请帮我写一条发在小区业主群的通知。读者大多是六七十岁的老人，用手机看。内容：本周六上午 9 点半，在社区活动室，有一场防诈骗讲座，大约一小时，可以带家人一起来。要求：不超过 100 字，分 3 行，口语、亲切；不用英文和网络用语；我没给的信息不要加，比如主讲人名字；不确定的地方用【待确认】标出来。",
-    reply: "【周六防骗讲座】本周六上午 9 点半，社区活动室，讲讲怎么防骗。大约一小时，欢迎带上家人一起来。有问题在群里问我。",
-    note: "短、清楚。但「有问题在群里问我」是 AI 加的，发之前要确认谁来回答。",
-    bad: false,
-  },
-];
+};
+const T = L10N[typeof PAGE_LANG === "string" ? PAGE_LANG : "zh"];
+const STYLES = T.styles;
 
 // 首页：轮播三种写法。
 function heroBrief(el) {
   let k = 0;
   const draw = () => {
     const s = STYLES[k];
-    el.innerHTML = `<p class="hint"><b>${s.name}</b>（演示）</p>
-      <div class="aicard"><div class="who">我的交代</div>${escHTML(s.prompt.length > 70 ? s.prompt.slice(0, 70) + "……" : s.prompt)}</div>
-      <div class="aicard"><div class="who">AI 回答（演示）</div>${escHTML(s.reply)}</div>
+    el.innerHTML = `<p class="hint"><b>${s.name}</b>${T.demo}</p>
+      <div class="aicard"><div class="who">${T.myBrief}</div>${escHTML(s.prompt.length > T.heroCut ? s.prompt.slice(0, T.heroCut) + T.ellipsis : s.prompt)}</div>
+      <div class="aicard"><div class="who">${T.aiReply}</div>${escHTML(s.reply)}</div>
       <p class="feedback ${s.bad ? "no" : "ok"}">${escHTML(s.note)}</p>`;
     k = (k + 1) % STYLES.length;
   };
@@ -42,49 +106,42 @@ function heroBrief(el) {
   setInterval(draw, 4200);
 }
 
-// 交代单：四件事分别填，下面实时拼成一段交代，并指出还缺哪件事。
-const PARTS = [
-  ["what", "做什么", "任务和成品，比如：写一条发在业主群的通知"],
-  ["who", "给谁用", "读者、用途、背景材料，比如：读者大多是老人，用手机看"],
-  ["good", "什么样算好", "长度、格式、语气，比如：不超过 100 字，分 3 行，口语"],
-  ["dont", "哪些不要", "边界，比如：我没给的信息不要加，不确定的标【待确认】"],
-];
+const PARTS = T.parts;
 
 function briefBuilder(el) {
-  el.innerHTML = `<p>把一件你想交给 AI 的事，按四件事分别写下来。下面会拼成一段完整的交代。</p>
+  el.innerHTML = `<p>${T.builderIntro}</p>
     ${PARTS.map(([id, label, ph]) => `<label style="display:block;margin:10px 0 4px"><b>${label}</b></label>
       <textarea data-part="${id}" rows="2" style="width:100%;font-size:16px;padding:8px" placeholder="${escHTML(ph)}"></textarea>`).join("")}
-    <div class="aicard" style="margin-top:12px"><div class="who">拼好的交代</div><div id="bout">（还没写）</div></div>
+    <div class="aicard" style="margin-top:12px"><div class="who">${T.assembled}</div><div id="bout">${T.notYet}</div></div>
     <p class="feedback" id="bmiss"></p>
-    <p class="hint">提醒：不要在这里或交代里写身份证号、银行卡号、病历、单位文件等信息（C5）。这个页面不保存、不上传你写的内容。</p>`;
+    <p class="hint">${T.privacy}</p>`;
   const update = () => {
     const vals = Object.fromEntries([...el.querySelectorAll("[data-part]")].map((t) => [t.dataset.part, t.value.trim()]));
-    const text = PARTS.map(([id]) => vals[id]).filter(Boolean).join("。");
-    el.querySelector("#bout").textContent = text ? text + "。" : "（还没写）";
+    const text = PARTS.map(([id]) => vals[id].replace(/[。.]+$/, "")).filter(Boolean).join(T.joiner);
+    el.querySelector("#bout").textContent = text ? text + T.end : T.notYet;
     const miss = PARTS.filter(([id]) => !vals[id]).map(([, label]) => label);
     const m = el.querySelector("#bmiss");
     m.className = `feedback ${miss.length ? "no" : "ok"}`;
-    m.textContent = miss.length ? `还缺：${miss.join("、")}。` : "四件事都说了。交回来以后，事实部分照 C4 查一遍。";
+    m.textContent = miss.length ? T.missing(miss) : T.allFour;
   };
   el.querySelectorAll("[data-part]").forEach((t) => t.addEventListener("input", update));
 }
 
-// 三种写法打分：每项 0–2 分，看分数从哪件事上拉开。
-const RUBRIC = ["事实对不对，有没有编", "适不适合读者", "长度、格式合不合要求", "拿回来还要改多少（改得少分高）"];
+const RUBRIC = T.rubric;
 
 function compareThree(el) {
   el.innerHTML = `<div class="btnrow">${STYLES.map((s, i) => `<button class="cbtn" data-s="${i}">${s.name}</button>`).join("")}</div>
     <div id="cview"></div>
-    <table style="margin-top:12px"><thead><tr><th>看什么</th>${STYLES.map((_, i) => `<th>${"ABC"[i]}</th>`).join("")}</tr></thead>
+    <table style="margin-top:12px"><thead><tr><th>${T.lookAt}</th>${STYLES.map((_, i) => `<th>${"ABC"[i]}</th>`).join("")}</tr></thead>
     <tbody>${RUBRIC.map((r, ri) => `<tr><td>${r}</td>${STYLES.map((_, si) => `<td><select data-r="${ri}" data-s="${si}" style="font-size:16px">
       <option value="">–</option><option>0</option><option>1</option><option>2</option></select></td>`).join("")}</tr>`).join("")}
-    <tr><td><b>合计</b></td>${STYLES.map((_, si) => `<td><b data-sum="${si}">0</b></td>`).join("")}</tr></tbody></table>
-    <p class="hint">参考：A 在「有没有编」上丢分最多，B 在「适不适合读者」上丢分，C 也不是满分：它加了一句我们没给的话。</p>`;
+    <tr><td><b>${T.total}</b></td>${STYLES.map((_, si) => `<td><b data-sum="${si}">0</b></td>`).join("")}</tr></tbody></table>
+    <p class="hint">${T.rubricHint}</p>`;
   const show = (i) => {
     const s = STYLES[i];
     el.querySelectorAll("[data-s].cbtn").forEach((b) => b.classList.toggle("on", Number(b.dataset.s) === i));
-    el.querySelector("#cview").innerHTML = `<div class="aicard"><div class="who">我的交代</div>${escHTML(s.prompt)}</div>
-      <div class="aicard"><div class="who">AI 回答（演示）</div>${escHTML(s.reply)}</div>`;
+    el.querySelector("#cview").innerHTML = `<div class="aicard"><div class="who">${T.myBrief}</div>${escHTML(s.prompt)}</div>
+      <div class="aicard"><div class="who">${T.aiReply}</div>${escHTML(s.reply)}</div>`;
   };
   el.querySelectorAll(".cbtn").forEach((b) => { b.onclick = () => show(Number(b.dataset.s)); });
   el.querySelectorAll("select").forEach((sel) => sel.addEventListener("change", () => {
