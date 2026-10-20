@@ -1,0 +1,72 @@
+/* 「AI 通识课」在 style.css 之上的改动：培玉配色、中文字体、更大的字号（适老）、新的框类型、页脚。
+   配色取自 peiyuMath/brand/peiyu/theme.json，和 kit/style.py 一致。 */
+:root {
+  --paper: #f7f4ee;
+  --paper-2: #efeae0;
+  --card-2: #ece7dc;
+  --ink: #1a2822;
+  --ink-2: #44514a;
+  --stone: #7a756a;
+  --teal: #2f7a56;          /* 松绿：主色 */
+  --teal-soft: #dcebe1;
+  --sea: #3e5c76;           /* 黛蓝：AI 的回答 */
+  --amber: #966524;         /* 赤金：强调 */
+  --mark: #f1e2c0;
+  --red: #b5452f;           /* 朱色：错、危险 */
+  --red-soft: #f3ddd6;
+  --green: #2f7a56;
+  --green-soft: #dcebe1;
+  --sans: "PingFang SC", "Noto Sans SC", "Noto Sans CJK SC", "Microsoft YaHei", "IBM Plex Sans", system-ui, sans-serif;
+  --display: "PingFang SC", "Noto Sans SC", "Noto Sans CJK SC", "Microsoft YaHei", system-ui, sans-serif;
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) { --teal: #5fb48a; --amber: #d9a441; --sea: #8fb0cc; --red: #e07a62; }
+}
+:root[data-theme="dark"] { --teal: #5fb48a; --amber: #d9a441; --sea: #8fb0cc; --red: #e07a62; }
+
+body { font-size: 17px; line-height: 1.8; }
+h1, h2, h3 { letter-spacing: 0; }
+
+/* 新的框：演示（构造例子）、活动、分人群、不插电 */
+.callout.demo { border-color: color-mix(in srgb, var(--amber) 45%, transparent); background: var(--mark); }
+.callout.demo > b:first-child { color: var(--amber); }
+.callout.activity { border-color: color-mix(in srgb, var(--sea) 45%, transparent); }
+.callout.activity > b:first-child { color: var(--sea); }
+.callout.track { border-color: color-mix(in srgb, var(--teal) 40%, transparent); }
+.callout.track > b:first-child { color: var(--teal); }
+.callout.unplugged > b:first-child { color: var(--amber); }
+
+/* 信号灯 */
+.lamp { display: inline-block; width: 0.8em; height: 0.8em; border-radius: 50%; vertical-align: -0.05em; margin-right: 6px; }
+.lamp.g { background: #2f7a56; } .lamp.y { background: #d9a441; } .lamp.r { background: #b5452f; }
+
+/* 出处角标和来源列表 */
+sup.cite a { text-decoration: none; font-size: 0.75em; color: var(--sea); }
+ol.sources { font-size: 14px; line-height: 1.6; word-break: break-all; }
+
+/* 互动：选项按钮、卡片、记录表 */
+.choices { display: flex; flex-wrap: wrap; gap: 8px; margin: 8px 0; }
+.choices button { font: inherit; font-size: 15px; padding: 6px 14px; border-radius: 8px; border: 1px solid var(--line); background: var(--paper); color: var(--ink); cursor: pointer; min-height: 40px; }
+.choices button.on { border-color: var(--teal); background: var(--teal-soft); font-weight: 600; }
+.choices button.bad { border-color: var(--red); background: var(--red-soft); }
+.aicard { border: 2px solid var(--sea); border-radius: 12px; padding: 12px 14px; margin: 10px 0; background: var(--card); }
+.aicard .who { font: 600 12px var(--mono); color: var(--sea); }
+.feedback { font-size: 15px; margin-top: 6px; min-height: 1.5em; }
+.feedback.ok { color: var(--teal); } .feedback.no { color: var(--red); }
+table.log input, table.log select { width: 100%; font: inherit; font-size: 14px; padding: 4px; border: 1px solid var(--line); border-radius: 6px; background: var(--paper); color: var(--ink); }
+.calc label { display: inline-flex; gap: 6px; align-items: center; margin: 4px 12px 4px 0; }
+.calc input { width: 6em; font: inherit; padding: 4px; border: 1px solid var(--line); border-radius: 6px; background: var(--paper); color: var(--ink); }
+
+/* 页脚 */
+footer p { margin: 4px 0; }
+footer .credit { display: flex; align-items: center; gap: 8px; margin-top: 10px; }
+footer .credit img { flex: none; }
+footer .credit b { font-weight: 600; color: var(--ink-2); }
+footer .fine { font-size: 13px; opacity: 0.85; }
+.logo-dark { display: none; }
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) .logo-light { display: none; }
+  :root:not([data-theme="light"]) .logo-dark { display: inline; }
+}
+:root[data-theme="dark"] .logo-light { display: none; }
+:root[data-theme="dark"] .logo-dark { display: inline; }

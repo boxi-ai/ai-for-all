@@ -1,0 +1,204 @@
+// 每个模块网页共用的路由和渲染。路由：#/（模块首页）和 #/<章节 slug>。
+// 照 peiyuUniversity/aie1001/site/assets/app.js 改成中文：课程名从 course.js 的 COURSE 读，
+// 每个模块提供 LECTURE、CHAPTERS（chapters.js）和 DEMOS（demos.js）；说明见 ../README.md。
+
+const main = document.getElementById("main");
+const pad = (k) => String(k + 1).padStart(2, "0");
+const CN_NUM = ["", "一", "二", "三", "四", "五", "六", "七", "八", "九", "十"];
+let cleanups = [];
+
+function mountDemos(root) {
+  root.querySelectorAll("[data-demo]").forEach((d) => {
+    const body = d.querySelector(".demo-body") || d;
+    DEMOS[d.dataset.demo](body);
+  });
+  root.querySelectorAll("[data-video]").forEach((v) => {
+    const src = v.dataset.video;
+    v.innerHTML = `<video controls preload="metadata" src="${src}"></video>
+      <div class="vcap">${(LECTURE.videos || {})[src] || ""}</div>`;
+    v.querySelector("video").addEventListener("error", () => {
+      v.innerHTML = `<div class="missing">这份网页没有附带视频文件。<br>把视频放到 <code>${src}</code> 就能在这里播放。</div>`;
+    });
+  });
+}
+
+function stopTimers() {
+  // 演示用了 setInterval；换页时全部清掉。
+  const max = setInterval(() => {}, 1000);
+  for (let k = 0; k <= max; k++) clearInterval(k);
+  cleanups.forEach((f) => f());
+  cleanups = [];
+}
+
+function renderHome() {
+  const L = LECTURE;
+  document.title = `${L.code} ${L.title} · ${COURSE.short}`;
+  main.innerHTML = `<div class="wrap">
+    <section class="hero">
+      <div>
+        <span class="pill">${COURSE.short} · ${L.code}${L.badge ? ` · ${L.badge}` : ""}</span>
+        <h1>${L.title}<small>${L.tagline}</small></h1>
+        <p class="lead">${L.lead}</p>
+        <div class="btnrow">
+          <a class="btn primary" href="#/${CHAPTERS[0].slug}">开始 → 第 1 章 · ${CHAPTERS[0].title}</a>
+          <a class="btn" href="#outline">本讲目录 ↓</a>
+        </div>
+        <p class="meta">${COURSE.checked} · <a href="../index.html">全部模块</a></p>
+      </div>
+      <div class="card hero-demo">
+        <div class="head"><span>${L.heroLabel}</span><button class="cbtn hero-pause">暂停</button></div>
+        <div data-demo="${L.heroDemo}"><div class="demo-body"></div></div>
+        <div class="caption">${L.heroCaption}</div>
+      </div>
+    </section>
+
+    <h2 class="section-title">${L.whyTitle}</h2>
+    <p class="section-sub">${L.whySub}</p>
+    <div class="why">${L.why.map(([h, p]) => `<div class="card"><h3>${h}</h3><p>${p}</p></div>`).join("")}</div>
+
+    <h2 class="section-title" id="outline">${CN_NUM[CHAPTERS.length] || CHAPTERS.length}章</h2>
+    <p class="section-sub">按讲义的顺序排列，建议从头读。</p>
+    <div class="chapters">${CHAPTERS.map((c, k) => `
+      <a class="card chapcard" href="#/${c.slug}">
+        <span class="num">${pad(k)}</span><h3>${c.title}</h3><p>${c.subtitle}</p>
+        <div class="tags">${c.tags.map((t) => `<span class="tag">${t}</span>`).join("")}</div>
+        <span class="go">打开 →</span></a>`).join("")}
+    </div>
+
+    <h2 class="section-title">怎么用这份讲义</h2>
+    <p class="section-sub">读 · 猜 · 试 · 记</p>
+    <div class="steps">
+      <div class="card"><b>第 1 步</b><h3>读</h3><p>每节一个要点，配一个真实或标明「演示」的例子。</p></div>
+      <div class="card"><b>第 2 步</b><h3>先猜</h3><p>看到金色的<b>先猜一猜</b>，先想好再点开答案。</p></div>
+      <div class="card"><b>第 3 步</b><h3>动手</h3><p>互动小工具可以改数字、点选项，看结果怎么变。</p></div>
+      <div class="card"><b>第 4 步</b><h3>记下来</h3><p>用核验记录表把你查过的东西记下来，最后做找错挑战。</p></div>
+    </div>
+
+    <section class="cta">
+      <h2>${L.ctaTitle}</h2>
+      <a class="btn primary" href="#/${CHAPTERS[0].slug}">第 1 章 · ${CHAPTERS[0].title} →</a>
+      <p class="meta" style="margin-top:16px">${L.minutes} · 手机和电脑都能看 · 没有网络也能打开本页（视频除外）</p>
+    </section>
+  </div>`;
+  mountDemos(main);
+  const btn = main.querySelector(".hero-pause");
+  btn.onclick = () => {
+    const holder = main.querySelector(`[data-demo="${L.heroDemo}"]`);
+    if (btn.textContent === "暂停") { stopTimers(); btn.textContent = "播放"; }
+    else { DEMOS[L.heroDemo](holder.querySelector(".demo-body")); btn.textContent = "暂停"; }
+  };
+}
+
+function heroHTML(c) {
+  if (!c.hero) return "";
+  if (c.hero === "toc") {
+    return `<div class="card hero-demo"><div class="head"><span>本讲一览</span></div>
+      ${CHAPTERS.slice(0, -1).map((x, k) => `<a href="#/${x.slug}" style="display:flex;gap:10px;padding:7px 4px;text-decoration:none;color:var(--ink);border-bottom:1px solid var(--line)"><b class="mono" style="color:var(--amber)">${pad(k)}</b><span>${x.title}</span></a>`).join("")}</div>`;
+  }
+  return `<div class="card hero-demo"><div data-demo="${c.hero}"><div class="demo-body"></div></div><div class="caption">${c.heroCaption}</div></div>`;
+}
+
+function renderChapter(k) {
+  const c = CHAPTERS[k];
+  document.title = `${c.title} · ${LECTURE.code} ${LECTURE.title} · ${COURSE.short}`;
+  const prev = CHAPTERS[k - 1], next = CHAPTERS[k + 1];
+  main.innerHTML = `<div class="wrap">
+    <section class="chap-hero">
+      <div>
+        <span class="pill">第 ${k + 1} 章 · ${c.nav}</span>
+        <h1>${c.title}</h1>
+        <p class="subtitle">${c.subtitle}</p>
+        <p class="abstract">${c.abstract}</p>
+      </div>
+      ${heroHTML(c)}
+    </section>
+    <div class="chap-body">
+      <nav class="toc" aria-label="本章目录"><b>本章</b>
+        ${c.sections.map((s, j) => `<a href="#/${c.slug}/${s.id}" data-sec="${s.id}">§${k + 1}.${j + 1} ${s.title}</a>`).join("")}
+      </nav>
+      <article>
+        ${c.sections.map((s, j) => `<section id="${s.id}"><h2><span class="sec">§${k + 1}.${j + 1}</span>${s.title}</h2>${s.html}</section>`).join("")}
+        <h2 style="font-size:20px">第 ${k + 1} 章 · 三句话</h2>
+        <div class="takeaways">${c.takeaways.map((t, j) => `<div class="card"><b>${j + 1}</b>${t}</div>`).join("")}</div>
+        <div class="pager" style="margin-top:28px">
+          ${prev ? `<a class="card" href="#/${prev.slug}"><small>← 上一章 · ${pad(k - 1)}</small><b>${prev.title}</b></a>` : `<a class="card" href="#/"><small>← 返回</small><b>本讲首页</b></a>`}
+          ${next ? `<a class="card next" href="#/${next.slug}"><small>下一章 · ${pad(k + 1)} →</small><b>${next.title}</b></a>` : `<a class="card next" href="#/"><small>读完了 →</small><b>回到本讲首页</b></a>`}
+        </div>
+      </article>
+    </div>
+  </div>`;
+  mountDemos(main);
+  const links = [...main.querySelectorAll(".toc a")];
+  const obs = new IntersectionObserver((entries) => {
+    entries.forEach((e) => {
+      if (e.isIntersecting) links.forEach((a) => a.classList.toggle("active", a.dataset.sec === e.target.id));
+    });
+  }, { rootMargin: "-80px 0px -65% 0px" });
+  main.querySelectorAll("article section").forEach((s) => obs.observe(s));
+  cleanups.push(() => obs.disconnect());
+}
+
+function route() {
+  stopTimers();
+  const [slug, sec] = location.hash.replace(/^#\/?/, "").split("/");
+  const k = CHAPTERS.findIndex((c) => c.slug === slug);
+  if (k >= 0) renderChapter(k); else renderHome();
+  document.querySelectorAll(".chapnav a").forEach((a) => a.classList.toggle("active", a.dataset.slug === slug));
+  const target = sec ? document.getElementById(sec) : null;
+  if (target) target.scrollIntoView();
+  else if (!location.hash.includes("outline")) window.scrollTo(0, 0);
+}
+
+// 页内锚点（#outline、目录链接）不重新渲染。
+document.addEventListener("click", (e) => {
+  const a = e.target.closest("a[href^='#']");
+  if (!a) return;
+  const href = a.getAttribute("href");
+  if (href === "#outline") { e.preventDefault(); document.getElementById("outline").scrollIntoView(); return; }
+  const m = href.match(/^#\/([^/]+)\/(.+)$/);
+  if (m && location.hash.startsWith(`#/${m[1]}`)) {
+    e.preventDefault();
+    document.getElementById(m[2])?.scrollIntoView();
+    history.replaceState(null, "", href);
+  }
+});
+
+document.querySelector(".brand-text").innerHTML = `<b>${LECTURE.code} · ${LECTURE.title}</b><span>${COURSE.short}</span>`;
+document.getElementById("chapnav").innerHTML = CHAPTERS.map((c, k) =>
+  `<a href="#/${c.slug}" data-slug="${c.slug}"><span>${pad(k)}</span>${c.nav}</a>`).join("");
+if (typeof renderFooter === "function") renderFooter("../");
+
+// 明暗主题：能存就记住选择。
+const themeBtn = document.getElementById("theme");
+function applyTheme(t) {
+  if (t) document.documentElement.dataset.theme = t; else delete document.documentElement.dataset.theme;
+  const dark = t ? t === "dark" : matchMedia("(prefers-color-scheme: dark)").matches;
+  themeBtn.textContent = dark ? "☀" : "☾";
+}
+try { applyTheme(localStorage.getItem(COURSE.themeKey)); } catch { applyTheme(null); }
+themeBtn.onclick = () => {
+  const dark = document.documentElement.dataset.theme
+    ? document.documentElement.dataset.theme === "dark"
+    : matchMedia("(prefers-color-scheme: dark)").matches;
+  const t = dark ? "light" : "dark";
+  applyTheme(t);
+  try { localStorage.setItem(COURSE.themeKey, t); } catch { /* storage unavailable */ }
+};
+
+// 阅读进度条。
+const bar = document.getElementById("progress");
+addEventListener("scroll", () => {
+  const h = document.documentElement.scrollHeight - innerHeight;
+  bar.style.width = h > 0 ? `${(100 * scrollY) / h}%` : "0";
+}, { passive: true });
+
+// 回到全部模块：每个模块页顶栏最左边。
+const homeLink = document.createElement("a");
+homeLink.className = "homelink";
+homeLink.href = "../index.html";
+homeLink.title = "全部模块";
+homeLink.innerHTML = `<span aria-hidden="true">←</span><span class="homelink-text">全部模块</span>`;
+document.querySelector(".topbar").prepend(homeLink);
+
+addEventListener("hashchange", route);
+route();
