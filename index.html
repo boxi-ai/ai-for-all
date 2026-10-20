@@ -11,9 +11,9 @@
   <style>
     .lec:hover { transform: none; }
     .lec .acts { display: flex; flex-wrap: wrap; gap: 8px; align-items: center; margin-top: 4px; }
-    .lec .notes { font-size: 14px; font-weight: 600; text-decoration: none; padding: 7px 12px; border-radius: 7px; border: 1px solid var(--line); }
+    .lec .notes { font-weight: 600; border: 1px solid var(--line); }
     .lec.ready .notes { color: var(--paper); background: var(--teal); border-color: var(--teal); }
-    .lec.soon .notes { color: var(--stone); cursor: help; }
+    .lec.soon .notes { cursor: help; }
     .lec .msg-soon { flex-basis: 100%; font-size: 13px; color: var(--stone); }
     .lec .en { display: block; font-size: 13px; color: var(--stone); margin-top: -4px; }
     .lec.core { outline: 2px solid var(--amber); }
@@ -73,7 +73,7 @@
     document.getElementById("modules").innerHTML = MODULES.map(([id, t, en, s, core]) =>
       `<div class="card chapcard lec soon${core ? " core" : ""}">
         <span class="num">${id}${core ? " · 招牌模块" : ""}<span class="live">已上线</span></span><h3>${t}</h3><span class="en">${en}</span><p>${s}</p>
-        <div class="acts"><a class="notes" href="${id}/index.html">制作中</a>${VIDEOS[id] ? `<span class="vdur">▶ 视频 ${VIDEOS[id].dur}</span>` : ""}</div></div>`).join("");
+        <div class="acts"><a class="notes" href="${id}/index.html">制作中</a>${VIDEOS[id] ? `<a class="watch" href="${id}/index.html#video" title="打开 ${id}，视频在页面顶部">▶ 视频 · ${VIDEOS[id].dur}</a>` : ""}</div></div>`).join("");
     // 模块文件夹里有 index.html 就算上线。用 file:// 打开时没法检查，链接都保持可点。
     const local = location.protocol === "file:";
     document.querySelectorAll(".lec").forEach((card) => {
