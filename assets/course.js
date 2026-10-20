@@ -35,9 +35,12 @@ function videoBlock(code) {
       <track kind="subtitles" srclang="en" label="English" src="${base}.en.vtt">
       你的浏览器不能播放这个视频，可以 <a href="${base}.mp4" download>下载 mp4</a>。
     </video>
-    <p class="vmeta"><b>本讲视频</b> · ${v.title} · ${v.dur} · 中文字幕（可切换英文）
-      · <a href="${base}.mp4" download="${code}.mp4">下载视频（mp4）</a>
-      · 字幕 <a href="${base}.zh.vtt" download>中文</a> / <a href="${base}.en.vtt" download>English</a></p>
+    <p class="vmeta"><b>本讲视频</b> · ${v.title} · ${v.dur} · 中文字幕（可切换英文）</p>
+    <div class="vacts">
+      <a class="vbtn watch" href="${base}.mp4" download="${code}.mp4">▶ 下载视频（mp4）</a>
+      <a class="vbtn cbtn-csc" href="${base}.zh.vtt" download>中文字幕</a>
+      <a class="vbtn cbtn-csc" href="${base}.en.vtt" download>English subtitles</a>
+    </div>
   </section>`;
 }
 

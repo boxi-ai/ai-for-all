@@ -75,11 +75,38 @@ footer .fine { font-size: 13px; opacity: 0.85; }
 .lecture-video { margin: 32px auto 0; max-width: 960px; }
 .lecture-video video { display: block; width: 100%; aspect-ratio: 16 / 9; height: auto; background: #000; border-radius: 12px; }
 .lecture-video .vmeta { font-size: 16px; color: var(--ink-2); margin: 10px 2px 0; line-height: 1.6; }
-.lecture-video .vmeta a { white-space: nowrap; }
+/* 视频区的按钮：颜色照 csc4801（boxi-cs.github.io/csc4801）一模一样——
+   下载视频 = 它总览卡片上的「▶ Video」按钮（.lec .watch：赤金边、浅金底、深色字，悬停 brightness 1.05）；
+   字幕 = 它视频播放框里的 .cbtn（纸色底、灰边、深色字，悬停边框和字变青）。焦点环和 csc4801 一样用浏览器默认。
+   色值直接写 csc4801 的（不是本站的松绿），字号按本站规矩不小于 16px。 */
+.lecture-video {
+  --csc-paper: #f6f5f1; --csc-ink: #1d232b; --csc-line: #d9dbd4;
+  --csc-teal: #0f6e73; --csc-amber: #c27a1a; --csc-mark: #f6e3be;
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) .lecture-video {
+    --csc-paper: #14181d; --csc-ink: #e8e6df; --csc-line: #333b44;
+    --csc-teal: #4fb3b0; --csc-amber: #e3a54b; --csc-mark: #4a3818;
+  }
+}
+:root[data-theme="dark"] .lecture-video {
+  --csc-paper: #14181d; --csc-ink: #e8e6df; --csc-line: #333b44;
+  --csc-teal: #4fb3b0; --csc-amber: #e3a54b; --csc-mark: #4a3818;
+}
+.lecture-video .vacts { display: flex; flex-wrap: wrap; gap: 8px; margin: 10px 2px 0; }
+.lecture-video .vbtn {
+  display: inline-flex; align-items: center; min-height: 40px; padding: 6px 12px; border-radius: 7px;
+  font-size: 16px; font-weight: 500; text-decoration: none; cursor: pointer;
+}
+.lecture-video .vbtn.watch { border: 1px solid var(--csc-amber); background: var(--csc-mark); color: var(--csc-ink); }
+.lecture-video .vbtn.watch:hover { filter: brightness(1.05); }
+.lecture-video .vbtn.cbtn-csc { border: 1px solid var(--csc-line); background: var(--csc-paper); color: var(--csc-ink); }
+.lecture-video .vbtn.cbtn-csc:hover { border-color: var(--csc-teal); color: var(--csc-teal); }
 @media (max-width: 640px) {
   .lecture-video { margin: 16px -16px 0; }
   .lecture-video video { border-radius: 0; }
   .lecture-video .vmeta { margin: 8px 16px 0; }
+  .lecture-video .vacts { margin: 8px 16px 0; }
 }
 /* 总览卡片上的视频时长 */
 .lec .vdur { font-size: 16px; color: var(--ink-2); margin-left: 4px; }
