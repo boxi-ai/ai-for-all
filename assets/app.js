@@ -30,10 +30,18 @@ function stopTimers() {
   cleanups = [];
 }
 
+function mountLectureVideo() {
+  const box = main.querySelector(".lecture-video");
+  if (!box) return;
+  const src = box.querySelector("source");
+  src.addEventListener("error", () => box.remove());
+}
+
 function renderHome() {
   const L = LECTURE;
   document.title = `${L.code} ${L.title} · ${COURSE.short}`;
   main.innerHTML = `<div class="wrap">
+    ${typeof videoBlock === "function" ? videoBlock(L.code) : ""}
     <section class="hero">
       <div>
         <span class="pill">${COURSE.short} · ${L.code}${L.badge ? ` · ${L.badge}` : ""}</span>
@@ -81,6 +89,7 @@ function renderHome() {
     </section>
   </div>`;
   mountDemos(main);
+  mountLectureVideo();
   const btn = main.querySelector(".hero-pause");
   btn.onclick = () => {
     const holder = main.querySelector(`[data-demo="${L.heroDemo}"]`);

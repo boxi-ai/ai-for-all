@@ -70,3 +70,16 @@ footer .fine { font-size: 13px; opacity: 0.85; }
 }
 :root[data-theme="dark"] .logo-light { display: none; }
 :root[data-theme="dark"] .logo-dark { display: inline; }
+
+/* 模块首页顶部的视频（course.js 的 videoBlock）。16:9，随宽度缩放；手机上贴边。 */
+.lecture-video { margin: 32px auto 0; max-width: 960px; }
+.lecture-video video { display: block; width: 100%; aspect-ratio: 16 / 9; height: auto; background: #000; border-radius: 12px; }
+.lecture-video .vmeta { font-size: 16px; color: var(--ink-2); margin: 10px 2px 0; line-height: 1.6; }
+.lecture-video .vmeta a { white-space: nowrap; }
+@media (max-width: 640px) {
+  .lecture-video { margin: 16px -16px 0; }
+  .lecture-video video { border-radius: 0; }
+  .lecture-video .vmeta { margin: 8px 16px 0; }
+}
+/* 总览卡片上的视频时长 */
+.lec .vdur { font-size: 16px; color: var(--ink-2); margin-left: 4px; }

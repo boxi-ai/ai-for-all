@@ -73,7 +73,7 @@
     document.getElementById("modules").innerHTML = MODULES.map(([id, t, en, s, core]) =>
       `<div class="card chapcard lec soon${core ? " core" : ""}">
         <span class="num">${id}${core ? " · 招牌模块" : ""}<span class="live">已上线</span></span><h3>${t}</h3><span class="en">${en}</span><p>${s}</p>
-        <div class="acts"><a class="notes" href="${id}/index.html">制作中</a></div></div>`).join("");
+        <div class="acts"><a class="notes" href="${id}/index.html">制作中</a>${VIDEOS[id] ? `<span class="vdur">▶ 视频 ${VIDEOS[id].dur}</span>` : ""}</div></div>`).join("");
     // 模块文件夹里有 index.html 就算上线。用 file:// 打开时没法检查，链接都保持可点。
     const local = location.protocol === "file:";
     document.querySelectorAll(".lec").forEach((card) => {

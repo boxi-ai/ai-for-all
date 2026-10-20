@@ -1,0 +1,101 @@
+WEBVTT
+
+1
+00:00:02.900 --> 00:00:11.112
+In 1966, Joseph Weizenbaum at MIT unveiled a chat program called ELIZA.
+
+2
+00:00:11.462 --> 00:00:20.453
+Its trick was simple: find a keyword in what you typed, then follow written rules to turn your words back into a question.
+
+3
+00:00:20.803 --> 00:00:33.811
+Yet many people felt it understood them. Weizenbaum's own secretary reportedly asked him to leave the room so she could talk to ELIZA alone.
+
+4
+00:00:34.161 --> 00:00:39.159
+Why would a program that only follows rules make people feel understood?
+
+5
+00:00:39.759 --> 00:00:46.138
+Today's AI talks far better. So what is AI, and what isn't it?
+
+6
+00:00:46.933 --> 00:00:52.727
+This is the first lesson of AI Literacy for Everyone: what AI is, and what it isn't.
+
+7
+00:00:53.077 --> 00:01:00.885
+You'll learn to tell two things apart: talking, versus thinking and taking responsibility.
+
+8
+00:01:01.667 --> 00:01:10.286
+First, what AI is. The OECD has a definition. In plain words:
+
+9
+00:01:10.636 --> 00:01:17.018
+AI is a machine-based system that works out, from the input it receives, what output to give.
+
+10
+00:01:17.618 --> 00:01:23.189
+Four common kinds of output: predictions, recommendations, content and decisions.
+
+11
+00:01:23.539 --> 00:01:35.345
+Your map app guessing when you'll arrive is a prediction; the next short video is a recommendation; a chatbot's paragraph is content; face unlock is a decision.
+
+12
+00:01:35.695 --> 00:01:45.669
+ELIZA's skills were all in rules people wrote. Most of today's AI is different: it learns its skills from large amounts of data.
+
+13
+00:01:46.467 --> 00:01:51.632
+Now, what AI isn't. Remember three 'not the same as'.
+
+14
+00:01:51.982 --> 00:02:00.587
+One: talking is not understanding. 'I understand how you feel' doesn't mean it understands or cares.
+
+15
+00:02:00.937 --> 00:02:10.922
+Two: answering is not knowing. Google's chatbot got the first exoplanet photo wrong in its launch demo.
+
+16
+00:02:11.272 --> 00:02:25.866
+Three: acting is not being responsible. An airline in Canada argued its website chatbot was responsible for what it said. The tribunal disagreed and ordered the airline to pay.
+
+17
+00:02:26.216 --> 00:02:32.196
+What a machine does, people answer for: the people who use it, and the organisation that put it to work.
+
+18
+00:02:32.967 --> 00:02:38.940
+Let's play an unplugged game: guess the rule. This is a demo.
+
+19
+00:02:39.290 --> 00:02:46.856
+One person is the machine, holding a rule card, for example: if the word is an animal, raise your left hand.
+
+20
+00:02:47.206 --> 00:02:56.213
+Everyone else calls out words. Kitten: left hand. Table: nothing. Tiger: left hand.
+
+21
+00:02:56.563 --> 00:03:06.766
+Got the rule? The machine is fast and accurate, but it doesn't know kittens are cute or tigers are dangerous. It just follows the rule.
+
+22
+00:03:07.116 --> 00:03:15.318
+Today's AI learns its rules from data instead of being given them, but the point is the same: getting it right is not understanding.
+
+23
+00:03:16.100 --> 00:03:26.891
+Three things to remember: AI turns inputs into outputs; talking isn't understanding and answering isn't knowing; people answer for what it does.
+
+24
+00:03:27.241 --> 00:03:37.620
+Quick exercise: count how many times you use AI today. Each time, is it predicting, recommending, generating content, or deciding?
+
+25
+00:03:37.970 --> 00:03:45.370
+Next time, C2: where AI's answers come from, and why it sometimes makes things up.

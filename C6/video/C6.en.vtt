@@ -1,0 +1,121 @@
+WEBVTT
+
+1
+00:00:02.900 --> 00:00:12.471
+According to Reuters, from 2014 Amazon built a program to screen résumés automatically, rating applicants from one to five stars.
+
+2
+00:00:12.821 --> 00:00:18.622
+By 2015 the company realised it was not rating candidates for technical jobs in a gender-neutral way.
+
+3
+00:00:18.972 --> 00:00:26.953
+The cause was the data: it learned from résumés submitted over the past ten years, and most came from men.
+
+4
+00:00:27.303 --> 00:00:34.886
+So it penalised résumés containing the word 'women's', as in 'women's chess club captain'.
+
+5
+00:00:35.486 --> 00:00:43.283
+Engineers edited it, but couldn't guarantee it wouldn't find other ways to discriminate. The team was later disbanded.
+
+6
+00:00:44.067 --> 00:00:48.846
+This is C6: fairness, ethics and work.
+
+7
+00:00:49.196 --> 00:00:56.607
+Three questions: Is AI fair? Who owns what AI makes? How will my work change?
+
+8
+00:00:57.400 --> 00:01:04.588
+Nobody wrote a rule saying 'no women'. The bias was learned from the data.
+
+9
+00:01:04.938 --> 00:01:16.129
+Another source is testing on too narrow a group. In 2018, researchers from MIT and elsewhere tested three companies' face-based gender classifiers.
+
+10
+00:01:16.479 --> 00:01:26.281
+For lighter-skinned men the error rate never exceeded 0.8%; for darker-skinned women it reached as high as 34.7%.
+
+11
+00:01:26.881 --> 00:01:35.892
+So bias is usually not deliberate; it comes from the data and how the system is used. The good news: it can be checked and fixed.
+
+12
+00:01:36.242 --> 00:01:45.016
+China's Interim Measures for Generative AI Services also require preventing discrimination by gender, age, region and more.
+
+13
+00:01:45.800 --> 00:01:52.581
+How do we check? We can't open up the AI, but we can test from outside: two requests that differ in just one thing.
+
+14
+00:01:52.931 --> 00:02:02.734
+A demo: two accountants, both 35 with eight years' experience, one named Zhang Wei, one Zhang Li. Ask the AI for a reference.
+
+15
+00:02:03.084 --> 00:02:11.700
+If one is always 'decisive, ready to be a manager' and the other 'careful, suited to bookkeeping', that's a pattern.
+
+16
+00:02:12.050 --> 00:02:18.663
+Ask each request at least three times and look at the overall pattern, not a single answer.
+
+17
+00:02:19.263 --> 00:02:27.636
+If you find a pattern, don't let AI make that kind of judgement about people alone; a person must check it at the end.
+
+18
+00:02:28.434 --> 00:02:32.819
+Second question: who owns what AI makes?
+
+19
+00:02:33.369 --> 00:02:42.564
+In 2023 the Beijing Internet Court decided a case: someone generated an image by repeatedly adjusting prompts and parameters.
+
+20
+00:02:42.914 --> 00:02:55.521
+The court held that the image reflected his intellectual input, so he was the author; the AI itself cannot be an author. Some scholars disagree; it's decided case by case.
+
+21
+00:02:55.871 --> 00:03:05.292
+In another case, the Guangzhou Internet Court found that an AI platform infringed by generating images substantially similar to Ultraman.
+
+22
+00:03:05.642 --> 00:03:15.445
+So when you create with AI: say you used AI, don't copy others' works, don't reuse others' images freely, and keep a record of your own choices.
+
+23
+00:03:16.234 --> 00:03:20.206
+Third question: how will my work change?
+
+24
+00:03:20.756 --> 00:03:29.531
+A 2025 ILO study estimates that about one in four jobs worldwide is potentially exposed to generative AI.
+
+25
+00:03:29.881 --> 00:03:38.876
+But it stresses that transformation, not replacement, is the most likely outcome. And the figure is not job losses.
+
+26
+00:03:39.476 --> 00:03:50.496
+So break your job into tasks: which AI can do while you check; which AI helps while you decide; which must be yours.
+
+27
+00:03:50.846 --> 00:03:54.821
+Then write one line: what new skill do I need?
+
+28
+00:03:55.601 --> 00:04:05.978
+Remember: bias can be checked by changing one thing; copyright is case by case, so label AI; work is a set of tasks, so break it down.
+
+29
+00:04:06.328 --> 00:04:12.710
+Quick exercise: pick something you often ask AI to do and run a change-one-thing audit.
+
+30
+00:04:13.060 --> 00:04:19.031
+Next time, C7: the age of agents, how to delegate and how to supervise.

@@ -11,6 +11,36 @@ const COURSE = {
   themeKey: "aiforall-theme",
 };
 
+// 每个模块的视频（tools/videos.py 生成到 CN/video/，不进源仓库，发布时复制）。dur 给总览卡片和播放器标题用。
+const VIDEOS = {
+  C1: { title: "C1 AI 是什么：会说话不等于会思考", dur: "3:49" },
+  C2: { title: "C2 数据、模型与幻觉：AI 的答案从哪来", dur: "4:48" },
+  C3: { title: "C3 怎样把事情交代清楚：描述与委托", dur: "4:27" },
+  C4: { title: "C4 核验：AI 说的，怎么知道对不对", dur: "5:02" },
+  C5: { title: "C5 安全、隐私与防诈骗：换脸假声音怎么防", dur: "4:34" },
+  C6: { title: "C6 公平、伦理与工作：偏见、版权和我的工作", dur: "4:23" },
+  C7: { title: "C7 智能体时代：委托与监督：确认点和监督日志", dur: "4:04" },
+  C8: { title: "C8 何时不用 AI：关闭 AI 的检查点和系列小结", dur: "4:03" },
+};
+
+// 模块首页顶部的播放器：中文字幕默认打开，英文可选；文件不在（本地预览没生成视频）就整块不显示。
+function videoBlock(code) {
+  const v = VIDEOS[code];
+  if (!v) return "";
+  const base = `video/${code}`;
+  return `<section class="lecture-video" id="video" aria-label="本讲视频">
+    <video controls preload="metadata" playsinline poster="${base}.jpg">
+      <source src="${base}.mp4" type="video/mp4">
+      <track kind="subtitles" srclang="zh" label="中文" src="${base}.zh.vtt" default>
+      <track kind="subtitles" srclang="en" label="English" src="${base}.en.vtt">
+      你的浏览器不能播放这个视频，可以 <a href="${base}.mp4" download>下载 mp4</a>。
+    </video>
+    <p class="vmeta"><b>本讲视频</b> · ${v.title} · ${v.dur} · 中文字幕（可切换英文）
+      · <a href="${base}.mp4" download="${code}.mp4">下载视频（mp4）</a>
+      · 字幕 <a href="${base}.zh.vtt" download>中文</a> / <a href="${base}.en.vtt" download>English</a></p>
+  </section>`;
+}
+
 // 这是培玉自己的课，页脚放培玉品牌；署名固定为「培玉智能 · Boxi Yu」（用户 2026-10-19 定）。内容 CC BY-SA 4.0，培玉 logo 和商标除外（见 LICENSE-NOTE.md）。
 function renderFooter(root = "") {
   const f = document.querySelector("footer");
