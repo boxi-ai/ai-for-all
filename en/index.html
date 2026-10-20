@@ -23,6 +23,9 @@
     .lec .live { display: none; margin-left: 6px; padding: 1px 8px; border-radius: 999px; font-size: 16px;
                  color: var(--paper); background: var(--teal); }
     .lec.ready .live { display: inline-block; }
+    /* EN labels are longer: keep the Live badge on the title row; the title text wraps instead */
+    .lec.ready .num { display: flex; align-items: center; }
+    .lec .live { flex: none; white-space: nowrap; }
     .part { font: 600 16px var(--mono); color: var(--amber); letter-spacing: 0.06em; margin: 34px 0 12px; }
     .tracks { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 12px; }
     .tracks .card { padding: 14px 16px; }
