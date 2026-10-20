@@ -1,101 +1,101 @@
 WEBVTT
 
 1
-00:00:02.900 --> 00:00:11.112
+00:00:02.900 --> 00:00:10.060
 In 1966, Joseph Weizenbaum at MIT unveiled a chat program called ELIZA.
 
 2
-00:00:11.462 --> 00:00:20.453
+00:00:10.410 --> 00:00:17.970
 Its trick was simple: find a keyword in what you typed, then follow written rules to turn your words back into a question.
 
 3
-00:00:20.803 --> 00:00:33.811
+00:00:18.320 --> 00:00:29.520
 Yet many people felt it understood them. Weizenbaum's own secretary reportedly asked him to leave the room so she could talk to ELIZA alone.
 
 4
-00:00:34.161 --> 00:00:39.159
+00:00:29.870 --> 00:00:35.670
 Why would a program that only follows rules make people feel understood?
 
 5
-00:00:39.759 --> 00:00:46.138
+00:00:36.270 --> 00:00:41.670
 Today's AI talks far better. So what is AI, and what isn't it?
 
 6
-00:00:46.933 --> 00:00:52.727
+00:00:42.467 --> 00:00:48.467
 This is the first lesson of AI Literacy for Everyone: what AI is, and what it isn't.
 
 7
-00:00:53.077 --> 00:01:00.885
+00:00:48.817 --> 00:00:56.177
 You'll learn to tell two things apart: talking, versus thinking and taking responsibility.
 
 8
-00:01:01.667 --> 00:01:10.286
+00:00:56.967 --> 00:01:03.807
 First, what AI is. The OECD has a definition. In plain words:
 
 9
-00:01:10.636 --> 00:01:17.018
+00:01:04.157 --> 00:01:11.757
 AI is a machine-based system that works out, from the input it receives, what output to give.
 
 10
-00:01:17.618 --> 00:01:23.189
+00:01:12.357 --> 00:01:18.157
 Four common kinds of output: predictions, recommendations, content and decisions.
 
 11
-00:01:23.539 --> 00:01:35.345
+00:01:18.507 --> 00:01:30.187
 Your map app guessing when you'll arrive is a prediction; the next short video is a recommendation; a chatbot's paragraph is content; face unlock is a decision.
 
 12
-00:01:35.695 --> 00:01:45.669
+00:01:30.537 --> 00:01:39.977
 ELIZA's skills were all in rules people wrote. Most of today's AI is different: it learns its skills from large amounts of data.
 
 13
-00:01:46.467 --> 00:01:51.632
+00:01:40.767 --> 00:01:45.887
 Now, what AI isn't. Remember three 'not the same as'.
 
 14
-00:01:51.982 --> 00:02:00.587
+00:01:46.237 --> 00:01:54.837
 One: talking is not understanding. 'I understand how you feel' doesn't mean it understands or cares.
 
 15
-00:02:00.937 --> 00:02:10.922
+00:01:55.187 --> 00:02:04.947
 Two: answering is not knowing. Google's chatbot got the first exoplanet photo wrong in its launch demo.
 
 16
-00:02:11.272 --> 00:02:25.866
+00:02:05.297 --> 00:02:17.657
 Three: acting is not being responsible. An airline in Canada argued its website chatbot was responsible for what it said. The tribunal disagreed and ordered the airline to pay.
 
 17
-00:02:26.216 --> 00:02:32.196
+00:02:18.007 --> 00:02:24.807
 What a machine does, people answer for: the people who use it, and the organisation that put it to work.
 
 18
-00:02:32.967 --> 00:02:38.940
+00:02:25.600 --> 00:02:30.360
 Let's play an unplugged game: guess the rule. This is a demo.
 
 19
-00:02:39.290 --> 00:02:46.856
+00:02:30.710 --> 00:02:38.190
 One person is the machine, holding a rule card, for example: if the word is an animal, raise your left hand.
 
 20
-00:02:47.206 --> 00:02:56.213
+00:02:38.540 --> 00:02:48.300
 Everyone else calls out words. Kitten: left hand. Table: nothing. Tiger: left hand.
 
 21
-00:02:56.563 --> 00:03:06.766
+00:02:48.650 --> 00:02:59.370
 Got the rule? The machine is fast and accurate, but it doesn't know kittens are cute or tigers are dangerous. It just follows the rule.
 
 22
-00:03:07.116 --> 00:03:15.318
+00:02:59.720 --> 00:03:08.560
 Today's AI learns its rules from data instead of being given them, but the point is the same: getting it right is not understanding.
 
 23
-00:03:16.100 --> 00:03:26.891
+00:03:09.334 --> 00:03:19.814
 Three things to remember: AI turns inputs into outputs; talking isn't understanding and answering isn't knowing; people answer for what it does.
 
 24
-00:03:27.241 --> 00:03:37.620
+00:03:20.164 --> 00:03:30.164
 Quick exercise: count how many times you use AI today. Each time, is it predicting, recommending, generating content, or deciding?
 
 25
-00:03:37.970 --> 00:03:45.370
+00:03:30.514 --> 00:03:36.954
 Next time, C2: where AI's answers come from, and why it sometimes makes things up.

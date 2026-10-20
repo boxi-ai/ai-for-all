@@ -1,117 +1,117 @@
 WEBVTT
 
 1
-00:00:02.900 --> 00:00:09.103
+00:00:02.900 --> 00:00:09.020
 Imagine asking a new colleague for help with just one line: write me a notice.
 
 2
-00:00:09.453 --> 00:00:17.429
+00:00:09.370 --> 00:00:16.650
 They're smart, but new. They don't know who it's for, what to say, or how long it should be. They can only guess.
 
 3
-00:00:17.779 --> 00:00:29.780
+00:00:17.000 --> 00:00:27.640
 Briefing an AI is the same. One AI company's official docs use exactly this picture: think of the AI as a brilliant but new employee.
 
 4
-00:00:30.130 --> 00:00:39.934
+00:00:27.990 --> 00:00:37.350
 The docs also give a test: show your instructions to a colleague with no context. If they'd be confused, the AI probably will be too.
 
 5
-00:00:40.284 --> 00:00:44.486
+00:00:37.700 --> 00:00:41.100
 So what does a clear brief look like?
 
 6
-00:00:45.267 --> 00:00:49.865
+00:00:41.900 --> 00:00:46.140
 This is C3: how to explain a task clearly.
 
 7
-00:00:50.215 --> 00:00:57.225
+00:00:46.490 --> 00:00:52.690
 You'll learn what to hand to AI, how to brief it, and how to revise what comes back.
 
 8
-00:00:58.000 --> 00:01:02.990
+00:00:53.467 --> 00:00:57.747
 Don't start typing yet. Before handing anything over, ask yourself four questions.
 
 9
-00:01:03.340 --> 00:01:08.913
+00:00:58.097 --> 00:01:04.337
 One: do I know what I want? If you can't say it, the AI can only guess.
 
 10
-00:01:09.263 --> 00:01:21.645
+00:01:04.687 --> 00:01:16.247
 Two: is this something AI is good at? Drafting, rewriting, organising and brainstorming, yes; obscure facts and recent news, it often gets wrong.
 
 11
-00:01:21.995 --> 00:01:30.202
+00:01:16.597 --> 00:01:23.517
 Three: how costly is a mistake? The higher the cost, the harder you check, or do it yourself.
 
 12
-00:01:30.552 --> 00:01:40.924
+00:01:23.867 --> 00:01:33.227
 Four: is there anything that shouldn't leave your hands? ID numbers, medical records, work files, other people's private details: don't give them to AI.
 
 13
-00:01:41.700 --> 00:01:46.483
+00:01:34.000 --> 00:01:38.080
 Once you decide to delegate, explain four things.
 
 14
-00:01:46.833 --> 00:01:51.037
+00:01:38.430 --> 00:01:42.510
 What: the task, and what the finished product should be.
 
 15
-00:01:51.387 --> 00:01:56.955
+00:01:42.860 --> 00:01:48.060
 For whom: the readers, the purpose, any background material.
 
 16
-00:01:57.305 --> 00:02:07.683
+00:01:48.410 --> 00:01:58.810
 What good looks like: length, format, tone, ideally an example. Not 'keep it short', but 'write three to five sentences'.
 
 17
-00:02:08.033 --> 00:02:18.015
+00:01:59.160 --> 00:02:07.840
 What not to do: don't invent anything I didn't give you; mark anything uncertain. This is the one people forget, and the one that matters most.
 
 18
-00:02:18.800 --> 00:02:26.783
+00:02:08.634 --> 00:02:15.474
 Here are three ways to brief the same task. This is a demo; the AI replies are our own mock-ups.
 
 19
-00:02:27.133 --> 00:02:39.505
+00:02:15.824 --> 00:02:26.704
 Version one is a single line: write a talk notice. The time, place and speaker in the reply are all made up by the AI, and they look real.
 
 20
-00:02:39.855 --> 00:02:53.839
+00:02:27.054 --> 00:02:39.294
 Version two gives the facts: this Saturday, 9:30 a.m., community room, on scams. The facts are right, but it's a full-page formal circular, hard for older readers on a phone.
 
 21
-00:02:54.189 --> 00:03:11.599
+00:02:39.644 --> 00:02:55.164
 Version three covers all four: for the residents' group chat, older readers, under 100 characters, three lines, plain words, add nothing I didn't give. The reply is short, clear and nearly ready.
 
 22
-00:03:11.949 --> 00:03:20.561
+00:02:55.514 --> 00:03:02.954
 But look: it still added 'ask me in the group if you have questions'. Who will answer? Check before sending.
 
 23
-00:03:21.334 --> 00:03:26.492
+00:03:03.734 --> 00:03:08.334
 A disappointing first draft is normal. The key is saying exactly what's wrong.
 
 24
-00:03:26.842 --> 00:03:35.845
+00:03:08.684 --> 00:03:16.644
 Not just 'bad, redo it', but 'line two is too long, make it one sentence, drop the stiff formal wording'.
 
 25
-00:03:36.195 --> 00:03:46.804
+00:03:16.994 --> 00:03:25.594
 Brief, look, say what's wrong, brief again. Once you're happy, check the facts the C4 way.
 
 26
-00:03:47.154 --> 00:03:53.354
+00:03:25.944 --> 00:03:31.944
 No brief, however clear, guarantees no mistakes. Whatever you send out is your responsibility.
 
 27
-00:03:54.134 --> 00:04:06.920
+00:03:32.734 --> 00:03:43.454
 Three things to remember: decide whether to delegate; explain the four things, what, for whom, what good looks like, what not to do; revise, then check.
 
 28
-00:04:07.270 --> 00:04:16.855
+00:03:43.804 --> 00:03:51.684
 Quick exercise: take a task of your own, write a one-line brief and a four-part brief, ask an AI both, and compare.
 
 29
-00:04:17.205 --> 00:04:23.006
+00:03:52.034 --> 00:03:57.114
 How do you know if what comes back is right? Watch C4: checking AI's answers.

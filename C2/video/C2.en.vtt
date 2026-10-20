@@ -1,133 +1,133 @@
 WEBVTT
 
 1
-00:00:02.900 --> 00:00:12.471
+00:00:02.900 --> 00:00:12.820
 In May 2024, Google rolled out AI Overviews in Search: an AI-written answer at the top of the page.
 
 2
-00:00:12.821 --> 00:00:17.604
+00:00:13.170 --> 00:00:17.570
 Someone asked: the cheese keeps sliding off my pizza. What should I do?
 
 3
-00:00:17.954 --> 00:00:23.141
+00:00:17.920 --> 00:00:22.520
 AI Overviews suggested adding some glue to the sauce: 'non-toxic glue will work'.
 
 4
-00:00:23.491 --> 00:00:32.672
+00:00:22.870 --> 00:00:33.030
 Reporters traced the idea to a Reddit comment from more than a decade ago, clearly a joke.
 
 5
-00:00:33.272 --> 00:00:39.253
+00:00:33.630 --> 00:00:39.350
 Why would AI take a joke seriously? Where do its answers come from?
 
 6
-00:00:40.033 --> 00:00:45.216
+00:00:40.133 --> 00:00:44.973
 This is C2: data, models and hallucination.
 
 7
-00:00:45.566 --> 00:00:52.326
+00:00:45.323 --> 00:00:51.403
 You'll learn where AI's answers come from, and why it sometimes makes things up with a straight face.
 
 8
-00:00:53.100 --> 00:01:00.897
+00:00:52.200 --> 00:00:59.240
 How is an AI made? Four words: data, training, model, answer.
 
 9
-00:01:01.247 --> 00:01:08.824
+00:00:59.590 --> 00:01:06.310
 Data is lots of text, images and sound, like the books and exercises a student has read.
 
 10
-00:01:09.174 --> 00:01:20.347
+00:01:06.660 --> 00:01:17.140
 Training means letting a program find patterns in the data and adjust again and again, like doing exercises and correcting mistakes. The result is called a model.
 
 11
-00:01:20.697 --> 00:01:28.662
+00:01:17.490 --> 00:01:25.090
 When you ask, the model works out an answer from the patterns it learned, like a student applying familiar tricks to a new exam question.
 
 12
-00:01:29.012 --> 00:01:35.385
+00:01:25.440 --> 00:01:32.120
 The key point: a model learns patterns. It is not an answer book it can look things up in.
 
 13
-00:01:36.167 --> 00:01:44.381
+00:01:32.900 --> 00:01:40.140
 A chat AI learns a special pattern, like a word chain: look at what came before and guess the most likely next word.
 
 14
-00:01:44.731 --> 00:01:56.933
+00:01:40.490 --> 00:01:52.410
 This is a demo. Start a famous line of poetry and it finishes it, because that line appears many times in its data, not because it has seen the moon.
 
 15
-00:01:57.283 --> 00:02:04.864
+00:01:52.760 --> 00:02:00.480
 At each step there are several plausible words, so the same question can get different answers.
 
 16
-00:02:05.214 --> 00:02:13.833
+00:02:00.830 --> 00:02:10.790
 In short: it learns to sound right, not to be right. Usually what sounds right is right, but not always.
 
 17
-00:02:14.601 --> 00:02:21.382
+00:02:11.567 --> 00:02:18.647
 Errors that sound true are called hallucinations. OpenAI researchers have explained several causes.
 
 18
-00:02:21.732 --> 00:02:29.540
+00:02:18.997 --> 00:02:27.237
 One: the training text isn't labelled true or false, so it learns what sounds plausible.
 
 19
-00:02:29.890 --> 00:02:46.283
+00:02:27.587 --> 00:02:43.107
 Two: some facts follow no pattern, like an ordinary person's birthday. Asked for one author's PhD thesis title, a chatbot confidently gave three different answers, all wrong.
 
 20
-00:02:46.633 --> 00:02:59.653
+00:02:43.457 --> 00:02:55.737
 Three: many tests only count right answers. A blank scores zero but a guess might be lucky, so models learn to guess when they don't know.
 
 21
-00:03:00.434 --> 00:03:04.406
+00:02:56.534 --> 00:02:59.974
 So AI's mistakes usually come from three places.
 
 22
-00:03:04.756 --> 00:03:11.353
+00:03:00.324 --> 00:03:06.044
 One: the data was wrong, or a joke, like glue on pizza.
 
 23
-00:03:11.703 --> 00:03:20.310
+00:03:06.394 --> 00:03:14.394
 Two: the data has little or nothing on it, like obscure names, dates or sources, so it makes one up.
 
 24
-00:03:20.660 --> 00:03:28.647
+00:03:14.744 --> 00:03:22.264
 Three: the data is out of date. The world changed after training, like Everest's latest height.
 
 25
-00:03:28.997 --> 00:03:37.766
+00:03:22.614 --> 00:03:32.214
 Even searching the web first isn't foolproof: what it finds may be unreliable, and the writing step can still go wrong.
 
 26
-00:03:38.534 --> 00:03:44.112
+00:03:33.001 --> 00:03:38.001
 Here's a challenge: make the AI get it wrong. This is a demo.
 
 27
-00:03:44.462 --> 00:03:52.433
+00:03:38.351 --> 00:03:46.071
 Think of an obscure question you can check, like the year a school near you was founded, and ask the AI.
 
 28
-00:03:52.783 --> 00:03:57.958
+00:03:46.421 --> 00:03:51.421
 Then check it yourself: the school website, local records, or ask an older neighbour.
 
 29
-00:03:58.308 --> 00:04:07.720
+00:03:51.771 --> 00:04:01.251
 If it gives a specific year that doesn't match, you've caught a made-up answer. If it honestly says it doesn't know, note that too.
 
 30
-00:04:08.070 --> 00:04:13.642
+00:04:01.601 --> 00:04:09.001
 The point isn't to prove AI is useless, but to see which kinds of questions trip it up.
 
 31
-00:04:14.434 --> 00:04:28.420
+00:04:09.768 --> 00:04:22.168
 Three things to remember: AI's answers come from data and a trained model; it learns to sound right, not to be right; check anything obscure, recent or important.
 
 32
-00:04:28.770 --> 00:04:36.738
+00:04:22.518 --> 00:04:30.278
 Quick exercise: make an AI get something wrong, and write down its words, your evidence and your conclusion in one line.
 
 33
-00:04:37.088 --> 00:04:43.457
+00:04:30.628 --> 00:04:35.908
 How do you check properly? Watch C4: how to tell if what AI says is right.
