@@ -1,6 +1,8 @@
 // 「AI 通识课」课程信息、页脚和语言切换。每页在 app.js 之前加载。
 // 照 peiyuUniversity/csc4801/site/assets/course.js 的做法：课程信息集中在这里，app.js 不写死课程名。
 // 双语（2026-10-20 加英文版）：页面语言看 <html lang>（zh-CN / en）；英文页在 site/en/ 下，和中文页一一对应。
+// 纯双语（用户 2026-10-23 定）：中文页只显示中文，英文页只显示英文；唯一例外是语言切换按钮（各用本语言写）。
+// 另一种语言的原文（出处原标题等）只放进 title 悬停提示。tools/check.py 会查。
 // 每页的 <html> 写 data-root（到 site/ 根的相对路径）和 data-page（本页相对 site/ 或 site/en/ 的路径），
 // 语言切换按钮和页脚 logo 路径都从这两个属性算。
 
@@ -9,20 +11,19 @@ const SITE_ROOT = document.documentElement.dataset.root ?? "../";   // 到 site/
 
 const COURSE_ZH = {
   code: "AI 通识课",
-  name: "AI 通识课 · AI Literacy for Everyone",
+  name: "AI 通识课",
   short: "AI 通识课",
   credit: "培玉智能 · Boxi Yu",
   motto: "人人会用、人人会验、人人知道何时不用",
   checked: "讲义里的每个事实都有出处链接；标「演示」的例子是为教学构造的。",
   themeKey: "aiforall-theme",
 };
-// 英文版：署名中文行不变，另加英文行 'Peiyu AI · Boxi Yu'（用户 2026-10-19 定）。
+// 英文版署名只写英文行 'Peiyu AI · Boxi Yu'（用户 2026-10-23 定，纯双语；中文页只写「培玉智能 · Boxi Yu」）。
 const COURSE_EN = {
   code: "AI Literacy",
-  name: "AI Literacy for Everyone · AI 通识课",
+  name: "AI Literacy for Everyone",
   short: "AI Literacy",
-  credit: "培玉智能 · Boxi Yu",
-  creditEn: "Peiyu AI · Boxi Yu",
+  credit: "Peiyu AI · Boxi Yu",
   motto: "Everyone can use it, everyone can check it, everyone knows when not to use it",
   checked: "Every fact in the notes links to its source; examples marked “Demo” were made up for teaching.",
   themeKey: "aiforall-theme",
@@ -56,7 +57,7 @@ const VIDEOS_EN = {
 };
 const VIDEO_INDEX = PAGE_LANG === "en" ? VIDEOS_EN : VIDEOS;
 
-// 模块首页顶部的播放器：中文页中文字幕默认打开、英文可选；英文页英文字幕默认打开。
+// 模块首页顶部的播放器：中文页只给中文字幕，英文页只给英文字幕（纯双语，用户 2026-10-23 定）。
 // 文件不在（本地预览没生成视频）就整块不显示（app.js mountLectureVideo）。
 function videoBlock(code) {
   if (PAGE_LANG === "en") return videoBlockEn(code);
@@ -67,14 +68,12 @@ function videoBlock(code) {
     <video controls preload="metadata" playsinline poster="${base}.jpg">
       <source src="${base}.mp4" type="video/mp4">
       <track kind="subtitles" srclang="zh" label="中文" src="${base}.zh.vtt" default>
-      <track kind="subtitles" srclang="en" label="English" src="${base}.en.vtt">
       你的浏览器不能播放这个视频，可以 <a href="${base}.mp4" download>下载 mp4</a>。
     </video>
-    <p class="vmeta"><b>本讲视频</b> · ${v.title} · ${v.dur} · 中文字幕（可切换英文）</p>
+    <p class="vmeta"><b>本讲视频</b> · ${v.title} · ${v.dur} · 中文字幕</p>
     <div class="vacts">
       <a class="vbtn watch" href="${base}.mp4" download="${code}.mp4">▶ 下载视频（mp4）</a>
-      <a class="vbtn cbtn-csc" href="${base}.zh.vtt" download>中文字幕</a>
-      <a class="vbtn cbtn-csc" href="${base}.en.vtt" download>English subtitles</a>
+      <a class="vbtn cbtn-csc" href="${base}.zh.vtt" download>下载中文字幕</a>
     </div>
   </section>`;
 }
@@ -85,36 +84,35 @@ function videoBlockEn(code) {
   const english = v.narration === "en";
   const base = english ? `video/${code}` : `${SITE_ROOT}${code}/video/${code}`;
   const note = english
-    ? "English narration · English subtitles (Chinese available)"
-    : "Chinese narration with English subtitles · <b>English narration coming soon</b>";
+    ? "English narration · English subtitles"
+    : "English subtitles · <b>English narration coming soon</b>";
   return `<section class="lecture-video" id="video" aria-label="Video for this module">
     <video controls preload="metadata" playsinline poster="${base}.jpg">
       <source src="${base}.mp4" type="video/mp4">
       <track kind="subtitles" srclang="en" label="English" src="${base}.en.vtt" default>
-      <track kind="subtitles" srclang="zh" label="中文" src="${base}.zh.vtt">
       Your browser can't play this video. You can <a href="${base}.mp4" download>download the mp4</a>.
     </video>
     <p class="vmeta"><b>Video</b> · ${v.title} · ${v.dur} · ${note}</p>
     <div class="vacts">
       <a class="vbtn watch" href="${base}.mp4" download="${code}${english ? "-en" : ""}.mp4">▶ Download video (mp4)</a>
-      <a class="vbtn cbtn-csc" href="${base}.en.vtt" download>English subtitles</a>
-      <a class="vbtn cbtn-csc" href="${base}.zh.vtt" download>中文字幕</a>
+      <a class="vbtn cbtn-csc" href="${base}.en.vtt" download>Download English subtitles</a>
     </div>
   </section>`;
 }
 
-// 这是培玉自己的课，页脚放培玉品牌；署名固定为「培玉智能 · Boxi Yu」（用户 2026-10-19 定）。内容 CC BY-SA 4.0，培玉 logo 和商标除外（见 LICENSE-NOTE.md）。
+// 这是培玉自己的课，页脚放培玉品牌；署名中文页「培玉智能 · Boxi Yu」、英文页「Peiyu AI · Boxi Yu」（用户 2026-10-23 定）。内容 CC BY-SA 4.0，培玉 logo 和商标除外（见 LICENSE-NOTE.md）。
 // root 是到 site/ 根的相对路径；不传就用 <html data-root>。
 function renderFooter(root = SITE_ROOT) {
   const f = document.querySelector("footer");
   if (!f) return;
-  const logos = `<img class="logo-light" src="${root}assets/peiyu-logo.svg" alt="培玉智能 logo" width="18" height="18">
-      <img class="logo-dark" src="${root}assets/peiyu-logo-white.svg" alt="培玉智能 logo" width="18" height="18">`;
+  const alt = PAGE_LANG === "en" ? "Peiyu AI logo" : "培玉智能 logo";
+  const logos = `<img class="logo-light" src="${root}assets/peiyu-logo.svg" alt="${alt}" width="18" height="18">
+      <img class="logo-dark" src="${root}assets/peiyu-logo-white.svg" alt="${alt}" width="18" height="18">`;
   f.innerHTML = PAGE_LANG === "en" ? `<div class="wrap">
     <p>${COURSE.name} · ${COURSE.motto}</p>
     <p class="credit">
       ${logos}
-      <span><b>${COURSE.credit}</b> · <b>${COURSE.creditEn}</b> · Content licensed <a href="https://creativecommons.org/licenses/by-sa/4.0/" target="_blank" rel="noopener license">CC BY-SA 4.0</a> (except the 培玉 / Peiyu name, logo and trademarks; all rights reserved) · Code MIT</span>
+      <span><b>${COURSE.credit}</b> · Content licensed <a href="https://creativecommons.org/licenses/by-sa/4.0/" target="_blank" rel="noopener license">CC BY-SA 4.0</a> (except the Peiyu name, logo and trademarks; all rights reserved) · Code MIT</span>
     </p>
     <p class="fine">${COURSE.checked}</p>
   </div>` : `<div class="wrap">
@@ -128,22 +126,36 @@ function renderFooter(root = SITE_ROOT) {
 }
 
 // 顶栏的「中文 / English」切换：链接到另一种语言的同一页，模块页的 #/章节 也带过去（两种语言的章节 slug 相同）。
+// 点了就记住（localStorage LANG_KEY）；只有中文总览页（默认入口）按记住的语言跳到英文总览，
+// 模块页和分享出去的链接不跳，第一次来的人也不按浏览器语言跳。
 function langHref(lang) {
   const page = document.documentElement.dataset.page || "index.html";
   return `${SITE_ROOT}${lang === "en" ? "en/" : ""}${page}${location.hash}`;
 }
+
+const LANG_KEY = "aiforall-lang";
+function rememberLang(lang) {
+  try { localStorage.setItem(LANG_KEY, lang); } catch { /* storage unavailable */ }
+}
+(function followRememberedLang() {
+  if (PAGE_LANG !== "zh" || (document.documentElement.dataset.page || "index.html") !== "index.html") return;
+  let saved = null;
+  try { saved = localStorage.getItem(LANG_KEY); } catch { /* storage unavailable */ }
+  if (saved === "en") location.replace(langHref("en"));
+})();
 
 function renderLangSwitch() {
   const bar = document.querySelector(".topbar");
   if (!bar || bar.querySelector(".langsw")) return;
   const nav = document.createElement("nav");
   nav.className = "langsw";
-  nav.setAttribute("aria-label", "语言 / Language");
+  nav.setAttribute("aria-label", PAGE_LANG === "en" ? "Language" : "语言");
   nav.innerHTML = ["zh", "en"].map((l) => `<a data-lang="${l}" lang="${l === "en" ? "en" : "zh-CN"}" hreflang="${l === "en" ? "en" : "zh-CN"}"
     ${l === PAGE_LANG ? 'aria-current="true" class="on"' : ""}>${l === "en" ? "English" : "中文"}</a>`).join("");
   const update = () => nav.querySelectorAll("a").forEach((a) => { a.href = langHref(a.dataset.lang); });
   update();
   addEventListener("hashchange", update);
+  nav.querySelectorAll("a").forEach((a) => a.addEventListener("click", () => rememberLang(a.dataset.lang)));
   const theme = bar.querySelector("#theme");
   bar.insertBefore(nav, theme || null);
 }

@@ -3,8 +3,8 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>AI 通识课 · AI Literacy for Everyone</title>
-  <meta name="description" content="「AI 通识课」开放课程（培玉智能 · Boxi Yu）：人人会用、人人会验、人人知道何时不用。8 个共享核心模块，中英双语。">
+  <title>AI 通识课</title>
+  <meta name="description" content="「AI 通识课」开放课程（培玉智能 · Boxi Yu）：人人会用、人人会验、人人知道何时不用。8 个共享核心模块。另有英文版。">
   <link rel="alternate" hreflang="zh-CN" href="https://boxi-ai.github.io/ai-for-all/">
   <link rel="alternate" hreflang="en" href="https://boxi-ai.github.io/ai-for-all/en/">
   <link rel="alternate" hreflang="x-default" href="https://boxi-ai.github.io/ai-for-all/">
@@ -18,7 +18,6 @@
     .lec.ready .notes { color: var(--paper); background: var(--teal); border-color: var(--teal); }
     .lec.soon .notes { cursor: help; }
     .lec .msg-soon { flex-basis: 100%; font-size: 13px; color: var(--stone); }
-    .lec .en { display: block; font-size: 13px; color: var(--stone); margin-top: -4px; }
     .lec.core { outline: 2px solid var(--amber); }
     .lec .live { display: none; margin-left: 6px; padding: 1px 8px; border-radius: 999px; font-size: 16px;
                  color: var(--paper); background: var(--teal); }
@@ -33,30 +32,30 @@
 </head>
 <body>
   <header class="topbar">
-    <a class="brand" href="index.html"><span class="brand-mark">AI</span><span class="brand-text"><b>AI 通识课</b><span>AI Literacy for Everyone</span></span></a>
+    <a class="brand" href="index.html"><span class="brand-mark">AI</span><span class="brand-text"><b>AI 通识课</b><span>培玉智能 · 开放课程</span></span></a>
     <span class="spacer" style="flex:1"></span>
     <button class="iconbtn" id="theme" title="明 / 暗">☾</button>
   </header>
   <main class="wrap">
     <section class="hero" style="grid-template-columns:minmax(0,1fr)">
       <div>
-        <span class="pill">培玉智能 · Boxi Yu · 开放课程 · 中文为主、英文为辅</span>
-        <h1>人人会用、人人会验、人人知道何时不用<small>Everyone can use it, check it, and knows when not to.</small></h1>
+        <span class="pill">培玉智能 · Boxi Yu · 开放课程</span>
+        <h1>人人会用、人人会验、人人知道何时不用</h1>
         <p class="lead">一套给所有人的 AI 通识课：8 个共享核心模块，按人群分成儿童 / K12、大学全专业、在职、银发族、教师几条路线。每个模块有讲义、3–5 分钟短视频和互动网页。招牌是 <b>C4 核验</b>：AI 会犯错，要会查。</p>
       </div>
     </section>
 
-    <div class="part">8 个共享核心模块 · CORE MODULES</div>
+    <div class="part">8 个共享核心模块</div>
     <div class="chapters" id="modules"></div>
 
-    <div class="part">谁可以学 · TRACKS</div>
+    <div class="part">谁可以学</div>
     <div class="tracks">
       <div class="card"><h3>儿童 / K12</h3><p>校本课、课后服务；不插电活动为主，老师操作 AI、孩子当侦探。</p></div>
       <div class="card"><h3>大学全专业</h3><p>16 周 2 学分：核验记录表、关闭 AI 的期中、AI+X 项目、口头答辩。</p></div>
       <div class="card"><h3>在职 / 转岗</h3><p>8 次 × 90 分钟微证书，带着自己的岗位任务来。</p></div>
       <div class="card"><h3>银发族</h3><p>6 次线下课 + 家人或志愿者陪伴，重点防诈骗。</p></div>
       <div class="card"><h3>教师</h3><p>30 学时研修：怎么教核验，怎么评核验。</p></div>
-      <div class="card"><h3>无障碍</h3><p>读屏友好、中英字幕、大字版、语音版、离线包。</p></div>
+      <div class="card"><h3>无障碍</h3><p>读屏友好、字幕、大字版、语音版、离线包。</p></div>
     </div>
     <p class="meta" style="margin:40px 0">讲义里的每个事实都有出处链接；标「演示」的例子是为教学构造的。模块完成一个上线一个。</p>
   </main>
@@ -64,18 +63,18 @@
   <script src="assets/course.js"></script>
   <script>
     const MODULES = [
-      ["C1", "AI 是什么 / 不是什么", "What AI is and isn't", "分清「会说话」和「会思考、会负责」"],
-      ["C2", "数据、模型与幻觉", "Data, models and hallucination", "AI 的答案从哪来，为什么会编"],
-      ["C3", "怎样把事情交代清楚", "Describing and delegating", "把任务说清楚、给够背景、定好标准"],
-      ["C4", "核验", "Checking AI's answers", "信号灯定级、核验五招、核验记录表、找错挑战", true],
-      ["C5", "安全、隐私、防诈骗与深度伪造", "Safety, privacy, scams and deepfakes", "守住钱、健康、个人信息三条红线"],
-      ["C6", "公平、伦理与社会 / 工作", "Fairness, ethics, society and work", "看见偏见，想清楚 AI 对工作的影响"],
-      ["C7", "智能体时代：委托与监督", "Agents: delegation and oversight", "交给智能体做事，写监督日志，能叫停"],
-      ["C8", "何时不用 AI、保持自主学习", "When not to use AI", "哪些事要自己做，保持独立能力"],
+      ["C1", "AI 是什么 / 不是什么", "分清「会说话」和「会思考、会负责」"],
+      ["C2", "数据、模型与幻觉", "AI 的答案从哪来，为什么会编"],
+      ["C3", "怎样把事情交代清楚", "把任务说清楚、给够背景、定好标准"],
+      ["C4", "核验", "信号灯定级、核验五招、核验记录表、找错挑战", true],
+      ["C5", "安全、隐私、防诈骗与深度伪造", "守住钱、健康、个人信息三条红线"],
+      ["C6", "公平、伦理与社会 / 工作", "看见偏见，想清楚 AI 对工作的影响"],
+      ["C7", "智能体时代：委托与监督", "交给智能体做事，写监督日志，能叫停"],
+      ["C8", "何时不用 AI、保持自主学习", "哪些事要自己做，保持独立能力"],
     ];
-    document.getElementById("modules").innerHTML = MODULES.map(([id, t, en, s, core]) =>
+    document.getElementById("modules").innerHTML = MODULES.map(([id, t, s, core]) =>
       `<div class="card chapcard lec soon${core ? " core" : ""}">
-        <span class="num">${id}${core ? " · 招牌模块" : ""}<span class="live">已上线</span></span><h3>${t}</h3><span class="en">${en}</span><p>${s}</p>
+        <span class="num">${id}${core ? " · 招牌模块" : ""}<span class="live">已上线</span></span><h3>${t}</h3><p>${s}</p>
         <div class="acts"><a class="notes" href="${id}/index.html">制作中</a>${VIDEOS[id] ? `<a class="watch" href="${id}/index.html#video" title="打开 ${id}，视频在页面顶部">▶ 视频 · ${VIDEOS[id].dur}</a>` : ""}</div></div>`).join("");
     // 模块文件夹里有 index.html 就算上线。用 file:// 打开时没法检查，链接都保持可点。
     const local = location.protocol === "file:";

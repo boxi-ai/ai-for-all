@@ -3,8 +3,8 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>AI Literacy for Everyone · AI 通识课</title>
-  <meta name="description" content="AI Literacy for Everyone (AI 通识课), an open course by Peiyu AI · Boxi Yu: everyone can use it, everyone can check it, everyone knows when not to use it. Eight shared core modules in Chinese and English.">
+  <title>AI Literacy for Everyone</title>
+  <meta name="description" content="AI Literacy for Everyone, an open course by Peiyu AI · Boxi Yu: everyone can use it, everyone can check it, everyone knows when not to use it. Eight shared core modules. Also available in Chinese.">
   <link rel="alternate" hreflang="zh-CN" href="https://boxi-ai.github.io/ai-for-all/">
   <link rel="alternate" hreflang="en" href="https://boxi-ai.github.io/ai-for-all/en/">
   <link rel="alternate" hreflang="x-default" href="https://boxi-ai.github.io/ai-for-all/">
@@ -18,7 +18,6 @@
     .lec.ready .notes { color: var(--paper); background: var(--teal); border-color: var(--teal); }
     .lec.soon .notes { cursor: help; }
     .lec .msg-soon { flex-basis: 100%; font-size: 16px; color: var(--stone); }
-    .lec .en { display: block; font-size: 16px; color: var(--stone); margin-top: -4px; }
     .lec.core { outline: 2px solid var(--amber); }
     .lec .live { display: none; margin-left: 6px; padding: 1px 8px; border-radius: 999px; font-size: 16px;
                  color: var(--paper); background: var(--teal); }
@@ -36,15 +35,15 @@
 </head>
 <body>
   <header class="topbar">
-    <a class="brand" href="index.html"><span class="brand-mark">AI</span><span class="brand-text"><b>AI Literacy for Everyone</b><span>AI 通识课</span></span></a>
+    <a class="brand" href="index.html"><span class="brand-mark">AI</span><span class="brand-text"><b>AI Literacy for Everyone</b><span>Peiyu AI · Open course</span></span></a>
     <span class="spacer" style="flex:1"></span>
     <button class="iconbtn" id="theme" title="Light / dark">☾</button>
   </header>
   <main class="wrap">
     <section class="hero" style="grid-template-columns:minmax(0,1fr)">
       <div>
-        <span class="pill">培玉智能 · Boxi Yu · Peiyu AI · Boxi Yu · Open course · Chinese first, with an English edition</span>
-        <h1>Everyone can use it, everyone can check it, everyone knows when not to use it<small>人人会用、人人会验、人人知道何时不用</small></h1>
+        <span class="pill">Peiyu AI · Boxi Yu · Open course</span>
+        <h1>Everyone can use it, everyone can check it, everyone knows when not to use it</h1>
         <p class="lead">An AI literacy course for everyone: 8 shared core modules, with tracks for children and schools, university students of any major, working adults, older adults and teachers. Each module has notes, a 3–5 minute video and an interactive web page. The signature module is <b>C4 Checking</b>: AI makes mistakes, so learn to check.</p>
       </div>
     </section>
@@ -52,14 +51,14 @@
     <div class="part">8 SHARED CORE MODULES</div>
     <div class="chapters" id="modules"></div>
 
-    <div class="part">WHO IT'S FOR · TRACKS</div>
+    <div class="part">WHO IT'S FOR</div>
     <div class="tracks">
       <div class="card"><h3>Children / K–12</h3><p>School lessons and after-school clubs; mostly unplugged activities, with the teacher at the keyboard and the children as detectives.</p></div>
       <div class="card"><h3>University, any major</h3><p>16 weeks, 2 credits: checking logs, an AI-off midterm, an AI + your-subject project and an oral defence.</p></div>
       <div class="card"><h3>Working adults</h3><p>A micro-credential of 8 × 90-minute sessions. Bring a real task from your own job.</p></div>
       <div class="card"><h3>Older adults</h3><p>6 in-person sessions with a family member or volunteer alongside, with a focus on avoiding scams.</p></div>
       <div class="card"><h3>Teachers</h3><p>A 30-hour course: how to teach checking, and how to assess it.</p></div>
-      <div class="card"><h3>Accessibility</h3><p>Screen-reader friendly, Chinese and English subtitles, large print, audio version and an offline pack.</p></div>
+      <div class="card"><h3>Accessibility</h3><p>Screen-reader friendly, subtitles, large print, audio version and an offline pack.</p></div>
     </div>
     <p class="meta" style="margin:40px 0">Every fact in the notes links to its source; examples marked “Demo” were made up for teaching. The English edition is adapted, not translated word for word: examples specific to China are kept and paired with an international equivalent.</p>
   </main>
@@ -67,18 +66,18 @@
   <script src="../assets/course.js"></script>
   <script>
     const MODULES = [
-      ["C1", "What AI is, and what it isn't", "AI 是什么 / 不是什么", "Tell “it can talk” apart from “it can think and take responsibility”"],
-      ["C2", "Data, models and hallucination", "数据、模型与幻觉", "Where AI's answers come from, and why it makes things up"],
-      ["C3", "Describing and delegating", "怎样把事情交代清楚", "Explain the task, give enough background, set the standard"],
-      ["C4", "Checking", "核验", "Traffic-light levels, five checking moves, a checking log, a spot-the-error challenge", true],
-      ["C5", "Safety, privacy, scams and deepfakes", "安全、隐私、防诈骗与深度伪造", "Hold three red lines: money, health and personal information"],
-      ["C6", "Fairness, ethics, society and work", "公平、伦理与社会 / 工作", "See bias, and think clearly about what AI means for work"],
-      ["C7", "Agents: delegation and oversight", "智能体时代：委托与监督", "Hand tasks to an AI agent, keep a supervision log, be able to stop it"],
-      ["C8", "When not to use AI", "何时不用 AI、保持自主学习", "What to do yourself, and how to keep your own skills"],
+      ["C1", "What AI is, and what it isn't", "Tell “it can talk” apart from “it can think and take responsibility”"],
+      ["C2", "Data, models and hallucination", "Where AI's answers come from, and why it makes things up"],
+      ["C3", "Describing and delegating", "Explain the task, give enough background, set the standard"],
+      ["C4", "Checking", "Traffic-light levels, five checking moves, a checking log, a spot-the-error challenge", true],
+      ["C5", "Safety, privacy, scams and deepfakes", "Hold three red lines: money, health and personal information"],
+      ["C6", "Fairness, ethics, society and work", "See bias, and think clearly about what AI means for work"],
+      ["C7", "Agents: delegation and oversight", "Hand tasks to an AI agent, keep a supervision log, be able to stop it"],
+      ["C8", "When not to use AI", "What to do yourself, and how to keep your own skills"],
     ];
-    document.getElementById("modules").innerHTML = MODULES.map(([id, t, zh, s, core]) =>
+    document.getElementById("modules").innerHTML = MODULES.map(([id, t, s, core]) =>
       `<div class="card chapcard lec soon${core ? " core" : ""}">
-        <span class="num">${id}${core ? " · Signature module" : ""}<span class="live">Live</span></span><h3>${t}</h3><span class="en" lang="zh-CN">${zh}</span><p>${s}</p>
+        <span class="num">${id}${core ? " · Signature module" : ""}<span class="live">Live</span></span><h3>${t}</h3><p>${s}</p>
         <div class="acts"><a class="notes" href="${id}/index.html">Coming soon</a>${VIDEO_INDEX[id] ? `<a class="watch" href="${id}/index.html#video" title="Open ${id}; the video is at the top of the page">▶ Video · ${VIDEO_INDEX[id].dur}</a>` : ""}</div></div>`).join("");
     // A module is live when its folder has an index.html. Under file:// we can't check, so links stay clickable.
     const local = location.protocol === "file:";
