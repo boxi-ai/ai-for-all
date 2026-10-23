@@ -12,8 +12,8 @@ const predict = (q, a) => callout("predict", "Guess first", `<p>${q}</p><details
 const SOURCES = [
   ["glue", "Kylie Robison, “Google promised a better search experience — now it’s telling us to put glue on our pizza”, The Verge, 2024-05-23", "https://www.theverge.com/2024/5/23/24162896/google-ai-overview-hallucinations-glue-in-pizza"],
   ["openai-hall", "OpenAI, “Why language models hallucinate”, 2025-09-05", "https://openai.com/index/why-language-models-hallucinate/"],
-  ["moe-tongshi", "Ministry of Education (China), Basic Education Teaching Steering Committee, 《中小学人工智能通识教育指南（2025年版）》 Guidelines for General AI Education in Primary and Secondary Schools, 2025 edition (in Chinese; full text reposted on a school website)", "https://www.tcc.edu.cn/h/chancheng/zxdt/2025-05-13/35042.html"],
-  ["moe-genai", "Ministry of Education (China), Basic Education Teaching Steering Committee, 《中小学生成式人工智能使用指南（2025年版）》 Guidelines for the Use of Generative AI in Primary and Secondary Schools, 2025 edition (in Chinese; full text reposted on a school website)", "https://www.tcc.edu.cn/h/chancheng/zxdt/2025-05-13/35038.html"],
+  ["moe-tongshi", "Ministry of Education (China), Basic Education Teaching Steering Committee, Guidelines for General AI Education in Primary and Secondary Schools, 2025 edition (in Chinese; full text reposted on a school website)", "https://www.tcc.edu.cn/h/chancheng/zxdt/2025-05-13/35042.html", "《中小学人工智能通识教育指南（2025年版）》"],
+  ["moe-genai", "Ministry of Education (China), Basic Education Teaching Steering Committee, Guidelines for the Use of Generative AI in Primary and Secondary Schools, 2025 edition (in Chinese; full text reposted on a school website)", "https://www.tcc.edu.cn/h/chancheng/zxdt/2025-05-13/35038.html", "《中小学生成式人工智能使用指南（2025年版）》"],
 ];
 const cite = (key) => {
   const k = SOURCES.findIndex(([id]) => id === key);
@@ -132,7 +132,7 @@ const CHAPTERS = [
         predict("Why does AI rarely misspell words, yet make up a person’s birthday?", "<p>Spelling follows fixed patterns and gets more accurate with learning; birthdays follow no pattern and can’t be guessed from patterns alone.</p>"),
       ].join("") },
       { id: "practice", title: "Practice", html: `<ol><li>Complete one “make the AI get it wrong” challenge and fill in a line of the checking log.</li><li>Ask an AI the same question twice, find where the answers disagree, and check which is right.</li><li>Think back to ELIZA in <a href="../C1/index.html">C1</a>: its rules were written by people; today’s AI learns its rules from data. Where does that make AI stronger, and where does it make its mistakes harder to predict?</li></ol>` },
-      { id: "sources", title: "Sources", html: `<p>All pages below were opened and checked on 2026-10-19.</p><ol class="sources">${SOURCES.map(([, t, u]) => `<li>${t}. <a href="${u}" target="_blank" rel="noopener">${u}</a></li>`).join("")}</ol>` },
+      { id: "sources", title: "Sources", html: `<p>All pages below were opened and checked on 2026-10-19.</p><ol class="sources">${SOURCES.map(([, t, u, o]) => `<li${o ? ` title="${o}"` : ""}>${t}. <a href="${u}" target="_blank" rel="noopener">${u}</a></li>`).join("")}</ol>` },
     ],
     takeaways: ["Answers come from data and a model.", "Sounding right ≠ being right.", "Obscure, recent, important: always check."],
   },

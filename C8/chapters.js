@@ -9,11 +9,11 @@ const predict = (q, a) => callout("predict", "先猜一猜", `<p>${q}</p><detail
 
 // 出处（同讲义脚注，访问于 2026-10-19）。
 const SOURCES = [
-  ["bastani", "Hamsa Bastani 等, “Generative AI without guardrails can harm learning: Evidence from high school mathematics”, PNAS, 2025, PMC 全文", "https://pmc.ncbi.nlm.nih.gov/articles/PMC12232635/"],
-  ["ms-critical", "Hao-Ping (Hank) Lee 等, “The Impact of Generative AI on Critical Thinking: Self-Reported Reductions in Cognitive Effort and Confidence Effects From a Survey of Knowledge Workers”, CHI 2025, Microsoft Research", "https://www.microsoft.com/en-us/research/publication/the-impact-of-generative-ai-on-critical-thinking-self-reported-reductions-in-cognitive-effort-and-confidence-effects-from-a-survey-of-knowledge-workers/"],
-  ["mit-brain", "Nataliya Kosmyna 等, “Your Brain on ChatGPT: Accumulation of Cognitive Debt when Using an AI Assistant for Essay Writing Task”, arXiv 预印本 2506.08872, 2025, MIT Media Lab", "https://www.media.mit.edu/publications/your-brain-on-chatgpt/"],
-  ["ailit-fw", "European Commission & OECD, “AILit Framework”, Frameworks 页面（能力 Manage AI 1；©2026 OECD 保留所有权利，只简短转述能力名称）", "https://ailiteracyframework.org/frameworks/"],
-  ["unesco-genai", "Fengchun Miao、Wayne Holmes, UNESCO, “Guidance for generative AI in education and research”, 2023（页面更新于 2026-01-16）", "https://www.unesco.org/en/articles/guidance-generative-ai-education-and-research"],
+  ["bastani", "Hamsa Bastani 等，《没有护栏的生成式 AI 会损害学习：来自高中数学的证据》（英文），PNAS，2025，PMC 全文", "https://pmc.ncbi.nlm.nih.gov/articles/PMC12232635/", "Generative AI without guardrails can harm learning: Evidence from high school mathematics"],
+  ["ms-critical", "Hao-Ping (Hank) Lee 等，《生成式 AI 对批判性思维的影响：知识工作者调查中自述的认知投入减少与信心效应》（英文），CHI 2025，微软研究院", "https://www.microsoft.com/en-us/research/publication/the-impact-of-generative-ai-on-critical-thinking-self-reported-reductions-in-cognitive-effort-and-confidence-effects-from-a-survey-of-knowledge-workers/", "The Impact of Generative AI on Critical Thinking: Self-Reported Reductions in Cognitive Effort and Confidence Effects From a Survey of Knowledge Workers"],
+  ["mit-brain", "Nataliya Kosmyna 等，《ChatGPT 下的大脑：用 AI 助手写作文时累积的认知负债》（英文），arXiv 预印本 2506.08872，2025，MIT 媒体实验室", "https://www.media.mit.edu/publications/your-brain-on-chatgpt/", "Your Brain on ChatGPT: Accumulation of Cognitive Debt when Using an AI Assistant for Essay Writing Task"],
+  ["ailit-fw", "欧盟委员会与经合组织（OECD），《AI 素养框架》（AILit，英文）框架页面（能力「管理 AI」第 1 条；©2026 OECD 保留所有权利，只简短转述能力名称）", "https://ailiteracyframework.org/frameworks/", "AILit Framework · Frameworks · Manage AI 1"],
+  ["unesco-genai", "苗逢春、Wayne Holmes，联合国教科文组织，《教育和研究中的生成式人工智能指南》（英文），2023（页面更新于 2026-01-16）", "https://www.unesco.org/en/articles/guidance-generative-ai-education-and-research", "Guidance for generative AI in education and research"],
   ["moe-genai", "教育部基础教育教学指导委员会《中小学生成式人工智能使用指南（2025年版）》（学校网站转载全文）", "https://www.tcc.edu.cn/h/chancheng/zxdt/2025-05-13/35038.html"],
 ];
 const cite = (key) => {
@@ -166,7 +166,7 @@ const CHAPTERS = [
         predict("L3「验」徽章要交哪三样东西？", "<p>核验挑战、监督日志、口头答辩。</p>"),
       ].join("") },
       { id: "practice", title: "练习", html: `<ol><li><b>检查点：</b>选一项本事，定下你的检查点规则，下周做第一次。</li><li><b>反思日志：</b>连续一周，每次用完 AI 写五行。</li><li><b>系列回顾：</b>用第 5 章的表给自己打分：哪一讲的东西你已经在用了，哪一讲还没有？</li></ol><p>相关模块：<a href="../C4/index.html">C4</a> 核验、<a href="../C5/index.html">C5</a> 红线、<a href="../C6/index.html">C6</a> 关系到人的判断、<a href="../C7/index.html">C7</a> 监督。回到 <a href="../index.html">全部模块</a>。</p>` },
-      { id: "sources", title: "出处", html: `<p>以下页面都在 2026-10-19 打开核对过。</p><ol class="sources">${SOURCES.map(([, t, u]) => `<li>${t}. <a href="${u}" target="_blank" rel="noopener">${u}</a></li>`).join("")}</ol>` },
+      { id: "sources", title: "出处", html: `<p>以下页面都在 2026-10-19 打开核对过。</p><ol class="sources">${SOURCES.map(([, t, u, o]) => `<li${o ? ` title="${o}"` : ""}>${t}。<a href="${u}" target="_blank" rel="noopener">${u}</a></li>`).join("")}</ol>` },
     ],
     takeaways: ["关掉 AI，我还会吗？", "六问。", "核验、监督、不用。"],
   },

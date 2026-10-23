@@ -9,12 +9,12 @@ const predict = (q, a) => callout("predict", "先猜一猜", `<p>${q}</p><detail
 
 // 出处（同讲义脚注，访问于 2026-10-19）。
 const SOURCES = [
-  ["anthropic-agents", "Erik S.、Barry Zhang, “Building effective agents”, Anthropic Engineering, 2024-12-19", "https://www.anthropic.com/engineering/building-effective-agents"],
+  ["anthropic-agents", "Erik S.、Barry Zhang，《构建有效的智能体》（英文），Anthropic Engineering，2024-12-19", "https://www.anthropic.com/engineering/building-effective-agents", "Building effective agents"],
   ["ai-plus", "国务院《关于深入实施“人工智能+”行动的意见》（国发〔2025〕11号），中国政府网", "https://www.gov.cn/zhengce/zhengceku/202508/content_7037862.htm"],
-  ["replit", "Simon Sharwood, “Vibe coding service Replit deleted production database”, The Register, 2025-07-21", "https://www.theregister.com/2025/07/21/replit_saastr_vibe_coding_incident/"],
-  ["openai-agent", "OpenAI, “Introducing ChatGPT agent”, 2025-07-17（页面现标注该发布说明已过时）", "https://openai.com/index/introducing-chatgpt-agent/"],
-  ["openai-help", "OpenAI Help Center, “ChatGPT agent”（页面显示该功能已不再提供，仍保留使用建议）", "https://help.openai.com/en/articles/11752874-chatgpt-agent"],
-  ["4d-terms", "Rick Dakan、Joseph Feller、Anthropic, “AI Fluency: Key Terminology Cheat Sheet”, 2025（CC BY-NC-SA 4.0，只简短转述术语定义）", "https://www-cdn.anthropic.com/4396730ed190e691a3712cf2fd6bfe35509deca2.pdf"],
+  ["replit", "Simon Sharwood，《氛围编程服务 Replit 删除了生产数据库》（英文），The Register，2025-07-21", "https://www.theregister.com/2025/07/21/replit_saastr_vibe_coding_incident/", "Vibe coding service Replit deleted production database"],
+  ["openai-agent", "OpenAI，《推出 ChatGPT 智能体》（英文），2025-07-17（页面现标注该发布说明已过时）", "https://openai.com/index/introducing-chatgpt-agent/", "Introducing ChatGPT agent"],
+  ["openai-help", "OpenAI 帮助中心，《ChatGPT 智能体》（英文；页面显示该功能已不再提供，仍保留使用建议）", "https://help.openai.com/en/articles/11752874-chatgpt-agent", "ChatGPT agent"],
+  ["4d-terms", "Rick Dakan、Joseph Feller、Anthropic，《AI 熟练度：关键术语速查表》（英文），2025（CC BY-NC-SA 4.0，只简短转述术语定义）", "https://www-cdn.anthropic.com/4396730ed190e691a3712cf2fd6bfe35509deca2.pdf", "AI Fluency: Key Terminology Cheat Sheet"],
   ["moe-genai", "教育部基础教育教学指导委员会《中小学生成式人工智能使用指南（2025年版）》（学校网站转载全文）", "https://www.tcc.edu.cn/h/chancheng/zxdt/2025-05-13/35038.html"],
 ];
 const cite = (key) => {
@@ -162,7 +162,7 @@ const CHAPTERS = [
         predict("监督日志里「我看到的证据」一栏，为什么不能照抄智能体的汇报？", "<p>它的汇报可能是错的，要看真实结果才能发现问题。</p>"),
       ].join("") },
       { id: "practice", title: "练习", html: `<ol><li><b>委托单：</b>为一件小事写一张委托单：目标、怎样算完成、权限、确认点。</li><li><b>监督日志：</b>完成一次真实或模拟的监督日志，至少 5 步。</li><li><b>找确认点：</b>想一个「AI 替人办事」的服务，指出它应该在哪里停下来问人。</li></ol><p>相关模块：<a href="../C3/index.html">C3</a> 讲怎样交代任务；<a href="../C4/index.html">C4</a> 的核验用在证据一栏；<a href="../C5/index.html">C5</a> 的三条红线就是硬性确认点；<a href="../C6/index.html">C6</a> 讲关系到人的判断不让 AI 单独做；<a href="../C8/index.html">C8</a> 讲哪些事干脆不交给 AI。</p>` },
-      { id: "sources", title: "出处", html: `<p>以下页面都在 2026-10-19 打开核对过。</p><ol class="sources">${SOURCES.map(([, t, u]) => `<li>${t}. <a href="${u}" target="_blank" rel="noopener">${u}</a></li>`).join("")}</ol>` },
+      { id: "sources", title: "出处", html: `<p>以下页面都在 2026-10-19 打开核对过。</p><ol class="sources">${SOURCES.map(([, t, u, o]) => `<li${o ? ` title="${o}"` : ""}>${t}。<a href="${u}" target="_blank" rel="noopener">${u}</a></li>`).join("")}</ol>` },
     ],
     takeaways: ["交小事，给小权限。", "五类先问人。", "边做边记日志。"],
   },

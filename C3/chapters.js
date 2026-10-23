@@ -9,11 +9,11 @@ const predict = (q, a) => callout("predict", "先猜一猜", `<p>${q}</p><detail
 
 // 出处（同讲义脚注，访问于 2026-10-19）。
 const SOURCES = [
-  ["anthropic-clear", "Anthropic, “Prompting best practices · Be clear and direct”（Claude 提示词官方文档）", "https://docs.anthropic.com/en/docs/build-with-claude/prompt-engineering/be-clear-and-direct"],
-  ["openai-tips", "OpenAI Help Center, “Best practices for prompt engineering with the OpenAI API”", "https://help.openai.com/en/articles/6654000-best-practices-for-prompt-engineering-with-the-openai-api"],
-  ["4d-academy", "Anthropic Academy, “The 4D Framework”（AI Fluency: Framework & Foundations 第 3 课）", "https://academy.claude.com/courses/ai-fluency-framework-foundations/the-4d-framework"],
-  ["4d-terms", "Rick Dakan、Joseph Feller、Anthropic, “AI Fluency: Key Terminology Cheat Sheet”, 2025（CC BY-NC-SA 4.0，这里只简短转述术语定义，未改编原文）", "https://www-cdn.anthropic.com/4396730ed190e691a3712cf2fd6bfe35509deca2.pdf"],
-  ["4d-course", "Anthropic, “AI Fluency: Framework & Foundations” 课程目录（含 “The Description-Discernment loop”）", "https://anthropic.skilljar.com/ai-fluency-framework-foundations"],
+  ["anthropic-clear", "Anthropic，《提示词最佳实践 · 清楚直接》（Claude 提示词官方文档，英文）", "https://docs.anthropic.com/en/docs/build-with-claude/prompt-engineering/be-clear-and-direct", "Prompting best practices · Be clear and direct"],
+  ["openai-tips", "OpenAI 帮助中心，《OpenAI API 提示词工程最佳实践》（英文）", "https://help.openai.com/en/articles/6654000-best-practices-for-prompt-engineering-with-the-openai-api", "Best practices for prompt engineering with the OpenAI API"],
+  ["4d-academy", "Anthropic Academy，《4D 框架》（「AI 熟练度：框架与基础」第 3 课，英文）", "https://academy.claude.com/courses/ai-fluency-framework-foundations/the-4d-framework", "The 4D Framework · AI Fluency: Framework & Foundations"],
+  ["4d-terms", "Rick Dakan、Joseph Feller、Anthropic，《AI 熟练度：关键术语速查表》（英文），2025（CC BY-NC-SA 4.0，这里只简短转述术语定义，未改编原文）", "https://www-cdn.anthropic.com/4396730ed190e691a3712cf2fd6bfe35509deca2.pdf", "AI Fluency: Key Terminology Cheat Sheet"],
+  ["4d-course", "Anthropic，《AI 熟练度：框架与基础》课程目录（含「描述—辨别循环」，英文）", "https://anthropic.skilljar.com/ai-fluency-framework-foundations", "AI Fluency: Framework & Foundations · The Description-Discernment loop"],
   ["moe-genai", "教育部基础教育教学指导委员会《中小学生成式人工智能使用指南（2025年版）》（学校网站转载全文）", "https://www.tcc.edu.cn/h/chancheng/zxdt/2025-05-13/35038.html"],
   ["mss-ai", "《AI融入生活：这些细节要警惕！》，「国家安全部」微信公众号，广东网信网转载，2024-10-15", "https://www.cagd.gov.cn/v/2024/10/6006.html"],
 ];
@@ -150,7 +150,7 @@ const CHAPTERS = [
         predict("想让 AI 帮你回复一封客户投诉邮件，交出去之前先想哪件事？", "<p>邮件里有没有客户的个人信息、单位不能外传的内容，先去掉或打码（C5）。</p>"),
       ].join("") },
       { id: "practice", title: "练习", html: `<ol><li>拿一个自己的真实任务，写三种交代，各问一次 AI，用第 4 章的表打分。</li><li>找一次你对 AI 回答不满意的经历，写出「哪里不行」的具体说法，再交代一轮。</li><li>你身边哪件事，交代清楚所花的工夫比自己做还多？这种事还值得交给 AI 吗？</li></ol>` },
-      { id: "sources", title: "出处", html: `<p>以下页面都在 2026-10-19 打开核对过。</p><ol class="sources">${SOURCES.map(([, t, u]) => `<li>${t}. <a href="${u}" target="_blank" rel="noopener">${u}</a></li>`).join("")}</ol>` },
+      { id: "sources", title: "出处", html: `<p>以下页面都在 2026-10-19 打开核对过。</p><ol class="sources">${SOURCES.map(([, t, u, o]) => `<li${o ? ` title="${o}"` : ""}>${t}。<a href="${u}" target="_blank" rel="noopener">${u}</a></li>`).join("")}</ol>` },
     ],
     takeaways: ["先想要不要交。", "交代四件事。", "来回改，改完还要查。"],
   },

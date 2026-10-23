@@ -15,8 +15,8 @@ const SOURCES = [
   ["4d-academy", "Anthropic Academy, “The 4D Framework” (AI Fluency: Framework & Foundations, lesson 3)", "https://academy.claude.com/courses/ai-fluency-framework-foundations/the-4d-framework"],
   ["4d-terms", "Rick Dakan, Joseph Feller, Anthropic, “AI Fluency: Key Terminology Cheat Sheet”, 2025 (CC BY-NC-SA 4.0; briefly paraphrased only)", "https://www-cdn.anthropic.com/4396730ed190e691a3712cf2fd6bfe35509deca2.pdf"],
   ["4d-course", "Anthropic, “AI Fluency: Framework & Foundations” course outline (includes “The Description-Discernment loop”)", "https://anthropic.skilljar.com/ai-fluency-framework-foundations"],
-  ["moe-genai", "Ministry of Education (China), Basic Education Teaching Steering Committee, 《中小学生成式人工智能使用指南（2025年版）》 Guidelines for the Use of Generative AI in Primary and Secondary Schools, 2025 edition (in Chinese; full text reposted on a school website)", "https://www.tcc.edu.cn/h/chancheng/zxdt/2025-05-13/35038.html"],
-  ["mss-ai", "《AI融入生活：这些细节要警惕！》 “AI in daily life: watch these details!”, from the WeChat account of China’s Ministry of State Security, reposted by the Guangdong Cyberspace Administration website (in Chinese), 2024-10-15", "https://www.cagd.gov.cn/v/2024/10/6006.html"],
+  ["moe-genai", "Ministry of Education (China), Basic Education Teaching Steering Committee, Guidelines for the Use of Generative AI in Primary and Secondary Schools, 2025 edition (in Chinese; full text reposted on a school website)", "https://www.tcc.edu.cn/h/chancheng/zxdt/2025-05-13/35038.html", "《中小学生成式人工智能使用指南（2025年版）》"],
+  ["mss-ai", "“AI in daily life: watch these details!”, from the WeChat account of China’s Ministry of State Security, reposted by the Guangdong Cyberspace Administration website (in Chinese), 2024-10-15", "https://www.cagd.gov.cn/v/2024/10/6006.html", "《AI融入生活：这些细节要警惕！》"],
 ];
 const cite = (key) => {
   const k = SOURCES.findIndex(([id]) => id === key);
@@ -151,7 +151,7 @@ const CHAPTERS = [
         predict("You want AI to help you reply to a customer’s complaint email. What should you think about first?", "<p>Whether the email contains the customer’s personal information or anything your organisation mustn’t share; remove or redact it first (C5).</p>"),
       ].join("") },
       { id: "practice", title: "Practice", html: `<ol><li>Take a real task of your own, write three briefs, ask an AI once with each, and score them with the table in chapter 4.</li><li>Think of a time an AI answer disappointed you; write down specifically what was wrong, and brief it again.</li><li>What task in your life takes more effort to explain than to just do? Is it still worth handing to AI?</li></ol>` },
-      { id: "sources", title: "Sources", html: `<p>All pages below were opened and checked on 2026-10-19.</p><ol class="sources">${SOURCES.map(([, t, u]) => `<li>${t}. <a href="${u}" target="_blank" rel="noopener">${u}</a></li>`).join("")}</ol>` },
+      { id: "sources", title: "Sources", html: `<p>All pages below were opened and checked on 2026-10-19.</p><ol class="sources">${SOURCES.map(([, t, u, o]) => `<li${o ? ` title="${o}"` : ""}>${t}. <a href="${u}" target="_blank" rel="noopener">${u}</a></li>`).join("")}</ol>` },
     ],
     takeaways: ["Decide whether to hand it over.", "Explain four things.", "Iterate, then check."],
   },

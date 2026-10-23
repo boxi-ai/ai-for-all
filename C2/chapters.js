@@ -9,8 +9,8 @@ const predict = (q, a) => callout("predict", "先猜一猜", `<p>${q}</p><detail
 
 // 出处（同讲义脚注，访问于 2026-10-19）。
 const SOURCES = [
-  ["glue", "Kylie Robison, “Google promised a better search experience — now it’s telling us to put glue on our pizza”, The Verge, 2024-05-23", "https://www.theverge.com/2024/5/23/24162896/google-ai-overview-hallucinations-glue-in-pizza"],
-  ["openai-hall", "OpenAI, “Why language models hallucinate”, 2025-09-05", "https://openai.com/index/why-language-models-hallucinate/"],
+  ["glue", "Kylie Robison，《谷歌承诺更好的搜索体验，现在却让我们往披萨上抹胶水》（英文），The Verge，2024-05-23", "https://www.theverge.com/2024/5/23/24162896/google-ai-overview-hallucinations-glue-in-pizza", "Google promised a better search experience — now it’s telling us to put glue on our pizza"],
+  ["openai-hall", "OpenAI，《语言模型为什么会产生幻觉》（英文），2025-09-05", "https://openai.com/index/why-language-models-hallucinate/", "Why language models hallucinate"],
   ["moe-tongshi", "教育部基础教育教学指导委员会《中小学人工智能通识教育指南（2025年版）》（学校网站转载全文）", "https://www.tcc.edu.cn/h/chancheng/zxdt/2025-05-13/35042.html"],
   ["moe-genai", "教育部基础教育教学指导委员会《中小学生成式人工智能使用指南（2025年版）》（学校网站转载全文）", "https://www.tcc.edu.cn/h/chancheng/zxdt/2025-05-13/35038.html"],
 ];
@@ -131,7 +131,7 @@ const CHAPTERS = [
         predict("为什么 AI 很少拼错字，却会编错一个人的生日？", "<p>拼写有固定规律，越学越准；生日没有规律可循，光靠规律猜不出来。</p>"),
       ].join("") },
       { id: "practice", title: "练习", html: `<ol><li>完成一次「让 AI 说错」挑战，填一行核验记录表。</li><li>同一个问题问 AI 两次，找出说法不一致的地方，查一查哪个对。</li><li>回想 <a href="../C1/index.html">C1</a> 的伊丽莎：规则是人写的；今天的 AI 规则从数据里学。这让 AI 更强在哪里，错又更难预料在哪里？</li></ol>` },
-      { id: "sources", title: "出处", html: `<p>以下页面都在 2026-10-19 打开核对过。</p><ol class="sources">${SOURCES.map(([, t, u]) => `<li>${t}. <a href="${u}" target="_blank" rel="noopener">${u}</a></li>`).join("")}</ol>` },
+      { id: "sources", title: "出处", html: `<p>以下页面都在 2026-10-19 打开核对过。</p><ol class="sources">${SOURCES.map(([, t, u, o]) => `<li${o ? ` title="${o}"` : ""}>${t}。<a href="${u}" target="_blank" rel="noopener">${u}</a></li>`).join("")}</ol>` },
     ],
     takeaways: ["答案来自数据和模型。", "说得像 ≠ 说得对。", "冷门、最新、要紧，一定要查。"],
   },

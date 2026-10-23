@@ -15,7 +15,7 @@ const SOURCES = [
   ["mit-brain", "Nataliya Kosmyna et al., “Your Brain on ChatGPT: Accumulation of Cognitive Debt when Using an AI Assistant for Essay Writing Task”, arXiv preprint 2506.08872, 2025, MIT Media Lab", "https://www.media.mit.edu/publications/your-brain-on-chatgpt/"],
   ["ailit-fw", "European Commission & OECD, “AILit Framework”, Frameworks page (competence Manage AI 1; ©2026 OECD, all rights reserved, so only the competence name is briefly paraphrased)", "https://ailiteracyframework.org/frameworks/"],
   ["unesco-genai", "Fengchun Miao and Wayne Holmes, UNESCO, “Guidance for generative AI in education and research”, 2023 (page updated 2026-01-16)", "https://www.unesco.org/en/articles/guidance-generative-ai-education-and-research"],
-  ["moe-genai", "Ministry of Education (China), Basic Education Teaching Steering Committee, 《中小学生成式人工智能使用指南（2025年版）》 Guidelines for the Use of Generative AI in Primary and Secondary Schools, 2025 edition (in Chinese; full text reposted on a school website)", "https://www.tcc.edu.cn/h/chancheng/zxdt/2025-05-13/35038.html"],
+  ["moe-genai", "Ministry of Education (China), Basic Education Teaching Steering Committee, Guidelines for the Use of Generative AI in Primary and Secondary Schools, 2025 edition (in Chinese; full text reposted on a school website)", "https://www.tcc.edu.cn/h/chancheng/zxdt/2025-05-13/35038.html", "《中小学生成式人工智能使用指南（2025年版）》"],
 ];
 const cite = (key) => {
   const k = SOURCES.findIndex(([id]) => id === key);
@@ -167,7 +167,7 @@ const CHAPTERS = [
         predict("What three things does the L3 “Check” badge require?", "<p>The checking challenge, a supervision log and an oral defence.</p>"),
       ].join("") },
       { id: "practice", title: "Practice", html: `<ol><li><b>Checkpoint:</b> pick a skill, set your checkpoint rule, and do the first one next week.</li><li><b>Reflection log:</b> for one week, write five lines after every use of AI.</li><li><b>Series review:</b> using the table in chapter 5, score yourself: which modules are you already using, and which not yet?</li></ol><p>Related modules: <a href="../C4/index.html">C4</a> checking, <a href="../C5/index.html">C5</a> red lines, <a href="../C6/index.html">C6</a> judgements about people, <a href="../C7/index.html">C7</a> supervising. Back to <a href="../index.html">all modules</a>.</p>` },
-      { id: "sources", title: "Sources", html: `<p>All pages below were opened and checked on 2026-10-19.</p><ol class="sources">${SOURCES.map(([, t, u]) => `<li>${t}. <a href="${u}" target="_blank" rel="noopener">${u}</a></li>`).join("")}</ol>` },
+      { id: "sources", title: "Sources", html: `<p>All pages below were opened and checked on 2026-10-19.</p><ol class="sources">${SOURCES.map(([, t, u, o]) => `<li${o ? ` title="${o}"` : ""}>${t}. <a href="${u}" target="_blank" rel="noopener">${u}</a></li>`).join("")}</ol>` },
     ],
     takeaways: ["With AI off, can I still do it?", "Six questions.", "Checking, supervising, not using."],
   },

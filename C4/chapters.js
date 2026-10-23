@@ -9,16 +9,16 @@ const predict = (q, a) => callout("predict", "先猜一猜", `<p>${q}</p><detail
 
 // 出处（同讲义脚注，访问于 2026-10-19）。
 const SOURCES = [
-  ["bard", "James Vincent, “Google’s AI chatbot Bard makes factual error in first demo”, The Verge, 2023-02-08", "https://www.theverge.com/2023/2/8/23590864/google-ai-chatbot-bard-mistake-error-exoplanet-demo"],
-  ["mata", "“Mata v. Avianca, Inc.”, Wikipedia", "https://en.wikipedia.org/wiki/Mata_v._Avianca,_Inc."],
-  ["aircanada", "“Moffatt v. Air Canada”（2024 BCCRT 149）, Wikipedia", "https://en.wikipedia.org/wiki/Moffatt_v._Air_Canada"],
+  ["bard", "James Vincent，《谷歌 AI 聊天机器人 Bard 首次演示就出了事实错误》（英文），The Verge，2023-02-08", "https://www.theverge.com/2023/2/8/23590864/google-ai-chatbot-bard-mistake-error-exoplanet-demo", "Google’s AI chatbot Bard makes factual error in first demo"],
+  ["mata", "「马塔诉阿维安卡航空案」，维基百科（英文）", "https://en.wikipedia.org/wiki/Mata_v._Avianca,_Inc.", "Mata v. Avianca, Inc."],
+  ["aircanada", "「莫法特诉加拿大航空案」（2024 BCCRT 149），维基百科（英文）", "https://en.wikipedia.org/wiki/Moffatt_v._Air_Canada", "Moffatt v. Air Canada"],
   ["baotou", "《AI诈骗上热搜！长相声音都对，“换脸”的“朋友”骗了他430万…》，澎湃新闻，2023-05-24", "https://www.thepaper.cn/newsDetail_forward_23206576"],
   ["baotou-tip", "《10分钟被骗走430万！小心AI换脸新型诈骗手段》，平安包头，2023-05-20（安全内参转载）", "https://www.secrss.com/articles/54863"],
   ["everest", "《8848.86米 珠峰新高程》，人民日报，新华网转载，2020-12-09", "https://www.xinhuanet.com/politics/2020-12/09/c_1126837804.htm"],
   ["everest-gov", "《习近平同尼泊尔总统班达里互致信函 共同宣布珠穆朗玛峰高程》，新华社，中国政府网，2020-12-08", "https://www.gov.cn/xinwen/2020-12/08/content_5568012.htm"],
   ["moe-genai", "教育部基础教育教学指导委员会《中小学生成式人工智能使用指南（2025年版）》（学校网站转载全文）", "https://www.tcc.edu.cn/h/chancheng/zxdt/2025-05-13/35038.html"],
   ["plan2026", "教育部等五部门《“人工智能+教育”行动计划》（教科信〔2026〕1号），中国政府网", "https://www.gov.cn/zhengce/zhengceku/202604/content_7065138.htm"],
-  ["4d", "Anthropic, “AI Fluency: Framework & Foundations”", "https://anthropic.skilljar.com/ai-fluency-framework-foundations"],
+  ["4d", "Anthropic，《AI 熟练度：框架与基础》（英文）", "https://anthropic.skilljar.com/ai-fluency-framework-foundations", "AI Fluency: Framework & Foundations"],
 ];
 const cite = (key) => {
   const k = SOURCES.findIndex(([id]) => id === key);
@@ -165,7 +165,7 @@ const CHAPTERS = [
       ].join("") },
       { id: "practice", title: "练习", html: `<ol><li>找一条最近在家庭群或朋友圈看到的「据说」消息，填一行核验记录表。</li><li>让 AI 回答一个你专业或工作里的问题，挑 3 个关键事实，用至少两招核验。</li><li>回想一次「信了、后来发现不对」的经历：当时用哪一招能早点发现？</li></ol>` },
       { id: "frameworks", title: "和国际框架的对应", html: `<p>Anthropic 与 University College Cork、Ringling College 的学者合作的 AI Fluency 课程把能力分成 4D：Delegation、Description、Discernment、Diligence。${cite("4d")} 本讲的核验五招对应辨别（Discernment），核验记录表和「责任在用的人」对应尽责（Diligence）。</p>` },
-      { id: "sources", title: "出处", html: `<p>以下页面都在 2026-10-19 打开核对过。</p><ol class="sources">${SOURCES.map(([, t, u]) => `<li>${t}. <a href="${u}" target="_blank" rel="noopener">${u}</a></li>`).join("")}</ol>` },
+      { id: "sources", title: "出处", html: `<p>以下页面都在 2026-10-19 打开核对过。</p><ol class="sources">${SOURCES.map(([, t, u, o]) => `<li${o ? ` title="${o}"` : ""}>${t}。<a href="${u}" target="_blank" rel="noopener">${u}</a></li>`).join("")}</ol>` },
     ],
     takeaways: ["AI 会一本正经地说错；用它自己核验它不算数。", "先定信号灯，红灯一定问人。", "五招 + 记录表；结论分对、错、过时、未核实。"],
   },

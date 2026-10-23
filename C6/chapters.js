@@ -9,17 +9,17 @@ const predict = (q, a) => callout("predict", "先猜一猜", `<p>${q}</p><detail
 
 // 出处（同讲义脚注，访问于 2026-10-19）。
 const SOURCES = [
-  ["amazon", "Jeffrey Dastin, “Amazon scraps secret AI recruiting tool that showed bias against women”, Reuters, CNBC 转载, 2018-10-10", "https://www.cnbc.com/2018/10/10/amazon-scraps-a-secret-ai-recruiting-tool-that-showed-bias-against-women.html"],
-  ["gendershades", "Larry Hardesty, “Study finds gender and skin-type bias in commercial artificial-intelligence systems”, MIT News, 2018-02-11（Buolamwini & Gebru, FAT* 2018）", "https://news.mit.edu/2018/study-finds-gender-skin-type-bias-artificial-intelligence-systems-0212"],
-  ["ailit-fw", "European Commission & OECD, “AILit Framework”, Frameworks 页面（知识点 2.5；©2026 OECD 保留所有权利，这里只简短转述）", "https://ailiteracyframework.org/frameworks/"],
+  ["amazon", "Jeffrey Dastin，《亚马逊弃用对女性有偏见的秘密 AI 招聘工具》（英文），路透社，CNBC 转载，2018-10-10", "https://www.cnbc.com/2018/10/10/amazon-scraps-a-secret-ai-recruiting-tool-that-showed-bias-against-women.html", "Amazon scraps secret AI recruiting tool that showed bias against women"],
+  ["gendershades", "Larry Hardesty，《研究发现商用人工智能系统存在性别和肤色偏见》（英文），MIT News，2018-02-11（Buolamwini 与 Gebru，FAT* 2018）", "https://news.mit.edu/2018/study-finds-gender-skin-type-bias-artificial-intelligence-systems-0212", "Study finds gender and skin-type bias in commercial artificial-intelligence systems"],
+  ["ailit-fw", "欧盟委员会与经合组织（OECD），《AI 素养框架》（AILit，英文）框架页面（知识点 2.5；©2026 OECD 保留所有权利，这里只简短转述）", "https://ailiteracyframework.org/frameworks/", "AILit Framework · Frameworks"],
   ["genai-rules", "国家网信办等七部门《生成式人工智能服务管理暂行办法》（令第15号），中国政府网", "https://www.gov.cn/zhengce/zhengceku/202307/content_6891752.htm"],
   ["algo-rules", "国家网信办等四部门《互联网信息服务算法推荐管理规定》（令第9号），中国政府网", "https://www.gov.cn/zhengce/zhengceku/2022-01/04/content_5666429.htm"],
   ["ai-plus", "国务院《关于深入实施“人工智能+”行动的意见》（国发〔2025〕11号），中国政府网", "https://www.gov.cn/zhengce/zhengceku/202508/content_7037862.htm"],
   ["bj-ai-image", "北京互联网法院（2023）京0491民初11279号民事判决书，2023-11-27，维基文库全文", "https://zh.wikisource.org/zh-hans/%E5%8C%97%E4%BA%AC%E4%BA%92%E8%81%94%E7%BD%91%E6%B3%95%E9%99%A2%EF%BC%882023%EF%BC%89%E4%BA%AC0491%E6%B0%91%E5%88%9D11279%E5%8F%B7%E6%B0%91%E4%BA%8B%E5%88%A4%E5%86%B3%E4%B9%A6"],
   ["bj-ai-debate", "郑子愚、谢瑞瑞《人工智能（AI）著作权第一案判决后仍存诸多异议》，解放日报，中国经济网转载，2024-01-17", "http://www.ce.cn/xwzx/fazhi/202401/17/t20240117_38869650.shtml"],
-  ["usco", "U.S. Copyright Office, “Copyright and Artificial Intelligence”（报告第二部分 2025-01-29 发布）", "https://www.copyright.gov/ai/"],
+  ["usco", "美国版权局，《版权与人工智能》（英文；报告第二部分 2025-01-29 发布）", "https://www.copyright.gov/ai/", "Copyright and Artificial Intelligence"],
   ["gz-ultraman", "王俊、冯恋阁《独家丨AI画出奥特曼：中国法院作出全球首例生成式AI服务侵犯著作权的生效判决》，21世纪经济报道，2024-02-26", "https://www.21jingji.com/article/20240226/herald/133a6c2f9c0b045899e4dea10c5778eb.html"],
-  ["ilo2025", "ILO, “One in four jobs at risk of being transformed by GenAI, new ILO–NASK Global Index shows”, 2025-05-20", "https://www.ilo.org/resource/news/one-four-jobs-risk-being-transformed-genai-new-ilo%E2%80%93nask-global-index-shows"],
+  ["ilo2025", "国际劳工组织（ILO），《国际劳工组织与 NASK 新全球指数显示：四分之一的工作可能被生成式 AI 改变》（英文），2025-05-20", "https://www.ilo.org/resource/news/one-four-jobs-risk-being-transformed-genai-new-ilo%E2%80%93nask-global-index-shows", "One in four jobs at risk of being transformed by GenAI, new ILO–NASK Global Index shows"],
   ["moe-genai", "教育部基础教育教学指导委员会《中小学生成式人工智能使用指南（2025年版）》（学校网站转载全文）", "https://www.tcc.edu.cn/h/chancheng/zxdt/2025-05-13/35038.html"],
   ["ai-label", "国家网信办等四部门《人工智能生成合成内容标识办法》（国信办通字〔2025〕2号），中国政府网", "https://www.gov.cn/zhengce/zhengceku/202503/content_7014286.htm"],
 ];
@@ -166,7 +166,7 @@ const CHAPTERS = [
         predict("「全球四分之一的岗位可能受影响」，是不是说四分之一的人会失业？", "<p>不是。研究说的是可能受影响，最可能的是工作被改变，不是被取代。</p>"),
       ].join("") },
       { id: "practice", title: "练习", html: `<ol><li><b>审计题：</b>选一个你常用 AI 做的、会落到人身上的任务，做一次「只改一处」的审计，写三行结论。</li><li><b>任务表：</b>完成第 5 章的任务表，写下你要补的一项本事。</li><li><b>版权题：</b>翻看你最近发的一张 AI 图或一段 AI 文字，按四条做法检查一遍。</li></ol><p>相关模块：<a href="../C2/index.html">C2</a> 讲数据怎样变成模型的本事和毛病；<a href="../C4/index.html">C4</a> 核验、<a href="../C5/index.html">C5</a> 信息底线用在任务表的每一行；<a href="../C7/index.html">C7</a> 讲把任务交给智能体时怎样监督；<a href="../C8/index.html">C8</a> 讲哪些事不交给 AI。</p>` },
-      { id: "sources", title: "出处", html: `<p>以下页面都在 2026-10-19 打开核对过。</p><ol class="sources">${SOURCES.map(([, t, u]) => `<li>${t}. <a href="${u}" target="_blank" rel="noopener">${u}</a></li>`).join("")}</ol>` },
+      { id: "sources", title: "出处", html: `<p>以下页面都在 2026-10-19 打开核对过。</p><ol class="sources">${SOURCES.map(([, t, u, o]) => `<li${o ? ` title="${o}"` : ""}>${t}。<a href="${u}" target="_blank" rel="noopener">${u}</a></li>`).join("")}</ol>` },
     ],
     takeaways: ["偏见能查：只改一处。", "版权个案判断：标明 AI。", "工作拆成任务。"],
   },

@@ -10,13 +10,13 @@ const predict = (q, a) => callout("predict", "先猜一猜", `<p>${q}</p><detail
 // 出处（同讲义脚注，访问于 2026-10-19）。
 const SOURCES = [
   ["eliza", "“ELIZA”, Wikipedia（含 Weizenbaum 1966 年论文和 1976 年著作的引用）", "https://en.wikipedia.org/wiki/ELIZA"],
-  ["oecd", "Stuart Russell, Karine Perset, Marko Grobelnik, “Updates to the OECD’s definition of an AI system explained”, OECD.AI, 2023-11-29", "https://oecd.ai/en/wonk/ai-system-definition-update"],
-  ["bard", "James Vincent, “Google’s AI chatbot Bard makes factual error in first demo”, The Verge, 2023-02-08", "https://www.theverge.com/2023/2/8/23590864/google-ai-chatbot-bard-mistake-error-exoplanet-demo"],
-  ["aircanada", "“Moffatt v. Air Canada”（2024 BCCRT 149）, Wikipedia", "https://en.wikipedia.org/wiki/Moffatt_v._Air_Canada"],
+  ["oecd", "Stuart Russell、Karine Perset、Marko Grobelnik，《OECD 人工智能系统定义的更新说明》（英文），OECD.AI，2023-11-29", "https://oecd.ai/en/wonk/ai-system-definition-update", "Updates to the OECD’s definition of an AI system explained"],
+  ["bard", "James Vincent，《谷歌 AI 聊天机器人 Bard 首次演示就出了事实错误》（英文），The Verge，2023-02-08", "https://www.theverge.com/2023/2/8/23590864/google-ai-chatbot-bard-mistake-error-exoplanet-demo", "Google’s AI chatbot Bard makes factual error in first demo"],
+  ["aircanada", "「莫法特诉加拿大航空案」（2024 BCCRT 149），维基百科（英文）", "https://en.wikipedia.org/wiki/Moffatt_v._Air_Canada", "Moffatt v. Air Canada"],
   ["moe-tongshi", "教育部基础教育教学指导委员会《中小学人工智能通识教育指南（2025年版）》（学校网站转载全文）", "https://www.tcc.edu.cn/h/chancheng/zxdt/2025-05-13/35042.html"],
   ["moe-genai", "教育部基础教育教学指导委员会《中小学生成式人工智能使用指南（2025年版）》（学校网站转载全文）", "https://www.tcc.edu.cn/h/chancheng/zxdt/2025-05-13/35038.html"],
-  ["unesco", "UNESCO, “AI competency framework for students”, 2024", "https://www.unesco.org/en/articles/ai-competency-framework-students"],
-  ["ailit", "European Commission & OECD, “AILit Framework”", "https://ailiteracyframework.org/"],
+  ["unesco", "联合国教科文组织（UNESCO），《学生人工智能能力框架》（英文），2024", "https://www.unesco.org/en/articles/ai-competency-framework-students", "AI competency framework for students"],
+  ["ailit", "欧盟委员会与经合组织（OECD），《AI 素养框架》（AILit，英文）", "https://ailiteracyframework.org/", "AILit Framework"],
 ];
 const cite = (key) => {
   const k = SOURCES.findIndex(([id]) => id === key);
@@ -132,7 +132,7 @@ const CHAPTERS = [
         predict("公司的客服机器人答应给你退款，后来公司不认账。该找谁？", "<p>找公司：让机器人上岗的机构要负责。</p>"),
       ].join("") },
       { id: "practice", title: "练习", html: `<ol><li>今天数一数你用了几次 AI，每次它在做预测、推荐、生成内容，还是做决定？</li><li>和家人玩一局猜规则游戏，玩完问：「机器」懂这些词吗？</li><li>想一个你猜 AI 可能会答错的问题，学完 <a href="../C2/index.html">C2</a> 再回来看看为什么。</li></ol>` },
-      { id: "sources", title: "出处", html: `<p>以下页面都在 2026-10-19 打开核对过。</p><ol class="sources">${SOURCES.map(([, t, u]) => `<li>${t}. <a href="${u}" target="_blank" rel="noopener">${u}</a></li>`).join("")}</ol>` },
+      { id: "sources", title: "出处", html: `<p>以下页面都在 2026-10-19 打开核对过。</p><ol class="sources">${SOURCES.map(([, t, u, o]) => `<li${o ? ` title="${o}"` : ""}>${t}。<a href="${u}" target="_blank" rel="noopener">${u}</a></li>`).join("")}</ol>` },
     ],
     takeaways: ["AI 根据输入推算输出。", "三个「不等于」。", "责任在人。"],
   },

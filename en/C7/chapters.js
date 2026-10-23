@@ -11,12 +11,12 @@ const predict = (q, a) => callout("predict", "Guess first", `<p>${q}</p><details
 // Sources (same as the notes' footnotes; accessed 2026-10-19).
 const SOURCES = [
   ["anthropic-agents", "Erik S. and Barry Zhang, “Building effective agents”, Anthropic Engineering, 2024-12-19", "https://www.anthropic.com/engineering/building-effective-agents"],
-  ["ai-plus", "State Council (China), 《关于深入实施“人工智能+”行动的意见》 Opinions on Deepening the “AI+” Initiative (国发〔2025〕11号), Chinese government website (in Chinese)", "https://www.gov.cn/zhengce/zhengceku/202508/content_7037862.htm"],
+  ["ai-plus", "State Council (China), Opinions on Deepening the “AI+” Initiative (State Council Document No. 11 [2025]), Chinese government website (in Chinese)", "https://www.gov.cn/zhengce/zhengceku/202508/content_7037862.htm", "《关于深入实施“人工智能+”行动的意见》；国发〔2025〕11号"],
   ["replit", "Simon Sharwood, “Vibe coding service Replit deleted production database”, The Register, 2025-07-21", "https://www.theregister.com/2025/07/21/replit_saastr_vibe_coding_incident/"],
   ["openai-agent", "OpenAI, “Introducing ChatGPT agent”, 2025-07-17 (the page now marks these release notes as outdated)", "https://openai.com/index/introducing-chatgpt-agent/"],
   ["openai-help", "OpenAI Help Center, “ChatGPT agent” (the page says the feature is no longer offered, but keeps the usage advice)", "https://help.openai.com/en/articles/11752874-chatgpt-agent"],
   ["4d-terms", "Rick Dakan, Joseph Feller and Anthropic, “AI Fluency: Key Terminology Cheat Sheet”, 2025 (CC BY-NC-SA 4.0; term definitions only briefly paraphrased)", "https://www-cdn.anthropic.com/4396730ed190e691a3712cf2fd6bfe35509deca2.pdf"],
-  ["moe-genai", "Ministry of Education (China), Basic Education Teaching Steering Committee, 《中小学生成式人工智能使用指南（2025年版）》 Guidelines for the Use of Generative AI in Primary and Secondary Schools, 2025 edition (in Chinese; full text reposted on a school website)", "https://www.tcc.edu.cn/h/chancheng/zxdt/2025-05-13/35038.html"],
+  ["moe-genai", "Ministry of Education (China), Basic Education Teaching Steering Committee, Guidelines for the Use of Generative AI in Primary and Secondary Schools, 2025 edition (in Chinese; full text reposted on a school website)", "https://www.tcc.edu.cn/h/chancheng/zxdt/2025-05-13/35038.html", "《中小学生成式人工智能使用指南（2025年版）》"],
 ];
 const cite = (key) => {
   const k = SOURCES.findIndex(([id]) => id === key);
@@ -37,7 +37,7 @@ const LECTURE = {
   why: [
     ["“Don’t” isn’t “can’t”", "By the account of the person involved, reported by The Register, he repeatedly told an agent not to change code, and it still deleted the production database."],
     ["One wrong step can lead to more", "An engineering article warns that autonomy means the potential for compounding errors: test first, and add guardrails."],
-    ["Agents are spreading", "China’s 国发〔2025〕11号 targets adoption of smart devices, AI agents and similar applications above 70% by 2027."],
+    ["Agents are spreading", "China’s State Council “AI+” opinions target adoption of smart devices, AI agents and similar applications above 70% by 2027."],
   ],
   ctaTitle: "Ready to write your first supervision log?",
   minutes: "About 45 minutes",
@@ -56,7 +56,7 @@ const CHAPTERS = [
         ${callout("note", "About the examples", "<p>The Replit database-deletion incident comes from a report in The Register and is the account of the person involved; the product-design examples come from vendors’ public release notes. As of 2026-10, agent products change fast and some have been withdrawn; this module <b>uses them only as examples of design ideas and does not recommend any particular product</b>. Tasks and logs marked “Demo” were made up for teaching.</p>")}
         <p>An Anthropic engineering article describes agents as systems where the model dynamically directs its own process and tool use, keeping control over how it accomplishes the task; in practice, often “a model using tools based on environmental feedback in a loop”. At each step it needs real results from the environment to judge its progress, and it can pause for human feedback at checkpoints or when it hits a blocker; it ends when the task is complete, and stopping conditions, such as a maximum number of steps, are common.${cite("anthropic-agents")}</p>
         ${callout("pattern", "In one line", "<p><b>Chat-style AI gives you answers; an agent acts for you.</b> And actions leave consequences: tickets booked, emails sent, files deleted.</p>")}
-        <p><i>(China-specific.)</i> The State Council’s <i>Opinions on Deepening the “AI+” Initiative</i> (国发〔2025〕11号) set targets for adoption of new-generation smart devices, AI agents and similar applications to exceed 70% by 2027 and 90% by 2030, and call for developing new forms of work such as intelligent agents.${cite("ai-plus")}</p>
+        <p><i>(China-specific.)</i> The State Council’s <i>Opinions on Deepening the “AI+” Initiative</i> (State Council Document No. 11 [2025]) set targets for adoption of new-generation smart devices, AI agents and similar applications to exceed 70% by 2027 and 90% by 2030, and call for developing new forms of work such as intelligent agents.${cite("ai-plus")}</p>
         ${predict("You tell an agent: “sort out my schedule for next week”. What might it do that you didn’t expect?", "<p>It might accept or decline invitations for you, book and pay for tickets, message other people, change calendar sharing settings… all actions with consequences. Chapters 3 and 4 cover how to limit this in advance.</p>")}` },
     ],
     takeaways: ["Agents act on their own, step after step, using tools.", "Actions have consequences."],
@@ -163,7 +163,7 @@ const CHAPTERS = [
         predict("Why can’t the “evidence I saw” column just copy the agent’s report?", "<p>Its report may be wrong; you only find problems by looking at the real results.</p>"),
       ].join("") },
       { id: "practice", title: "Practice", html: `<ol><li><b>Delegation sheet:</b> for a small job, write the goal, what “done” means, access and checkpoints.</li><li><b>Supervision log:</b> complete a real or simulated supervision log of at least 5 steps.</li><li><b>Find the checkpoints:</b> think of an “AI does it for you” service and say where it should stop and ask a person.</li></ol><p>Related modules: <a href="../C3/index.html">C3</a> covers briefing tasks; <a href="../C4/index.html">C4</a> checking goes into the evidence column; <a href="../C5/index.html">C5</a>’s three red lines are hard checkpoints; <a href="../C6/index.html">C6</a> says not to leave judgements about people to AI alone; <a href="../C8/index.html">C8</a> covers what not to hand to AI at all.</p>` },
-      { id: "sources", title: "Sources", html: `<p>All pages below were opened and checked on 2026-10-19.</p><ol class="sources">${SOURCES.map(([, t, u]) => `<li>${t}. <a href="${u}" target="_blank" rel="noopener">${u}</a></li>`).join("")}</ol>` },
+      { id: "sources", title: "Sources", html: `<p>All pages below were opened and checked on 2026-10-19.</p><ol class="sources">${SOURCES.map(([, t, u, o]) => `<li${o ? ` title="${o}"` : ""}>${t}. <a href="${u}" target="_blank" rel="noopener">${u}</a></li>`).join("")}</ol>` },
     ],
     takeaways: ["Small jobs, small access.", "Five kinds of action: ask first.", "Keep a log as it works."],
   },
